@@ -154,7 +154,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Auto_Repa__IdAut__6D0D32F4">
+  <Association Name="FK__Auto_Repa__IdAut__5EBF139D">
     <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
     <End Role="Auto_Reparacion" Type="Self.Auto_Reparacion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -166,7 +166,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Auto_Repa__IdRes__6E01572D">
+  <Association Name="FK__Auto_Repa__IdRes__5FB337D6">
     <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="1" />
     <End Role="Auto_Reparacion" Type="Self.Auto_Reparacion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -310,7 +310,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto___IdPro__5EBF139D">
+  <Association Name="FK__Producto___IdPro__628FA481">
     <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
     <End Role="Producto_Reparacion" Type="Self.Producto_Reparacion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -322,7 +322,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Producto___IdRes__5FB337D6">
+  <Association Name="FK__Producto___IdRes__6383C8BA">
     <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="1" />
     <End Role="Producto_Reparacion" Type="Self.Producto_Reparacion" Multiplicity="*" />
     <ReferentialConstraint>
@@ -382,18 +382,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Function Name="Alta_Producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
-    <Parameter Name="NoParte" Type="varchar" Mode="In" />
-  </Function>
   <Function Name="SP_Cliente_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="Nombre" Type="varchar" Mode="In" />
-    <Parameter Name="ApPat" Type="varchar" Mode="In" />
-    <Parameter Name="ApMat" Type="varchar" Mode="In" />
-    <Parameter Name="Telefono" Type="varchar" Mode="In" />
-    <Parameter Name="Correo" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="SP_Cliente_Altaid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
     <Parameter Name="ApPat" Type="varchar" Mode="In" />
     <Parameter Name="ApMat" Type="varchar" Mode="In" />
@@ -431,11 +420,11 @@
       <End Role="Status_Auto" EntitySet="Status_Auto" />
       <End Role="Auto" EntitySet="Auto" />
     </AssociationSet>
-    <AssociationSet Name="FK__Auto_Repa__IdAut__6D0D32F4" Association="Self.FK__Auto_Repa__IdAut__6D0D32F4">
+    <AssociationSet Name="FK__Auto_Repa__IdAut__5EBF139D" Association="Self.FK__Auto_Repa__IdAut__5EBF139D">
       <End Role="Auto" EntitySet="Auto" />
       <End Role="Auto_Reparacion" EntitySet="Auto_Reparacion" />
     </AssociationSet>
-    <AssociationSet Name="FK__Auto_Repa__IdRes__6E01572D" Association="Self.FK__Auto_Repa__IdRes__6E01572D">
+    <AssociationSet Name="FK__Auto_Repa__IdRes__5FB337D6" Association="Self.FK__Auto_Repa__IdRes__5FB337D6">
       <End Role="Restauracion" EntitySet="Restauracion" />
       <End Role="Auto_Reparacion" EntitySet="Auto_Reparacion" />
     </AssociationSet>
@@ -483,11 +472,11 @@
       <End Role="Restauracion" EntitySet="Restauracion" />
       <End Role="Factura" EntitySet="Factura" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto___IdPro__5EBF139D" Association="Self.FK__Producto___IdPro__5EBF139D">
+    <AssociationSet Name="FK__Producto___IdPro__628FA481" Association="Self.FK__Producto___IdPro__628FA481">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="Producto_Reparacion" EntitySet="Producto_Reparacion" />
     </AssociationSet>
-    <AssociationSet Name="FK__Producto___IdRes__5FB337D6" Association="Self.FK__Producto___IdRes__5FB337D6">
+    <AssociationSet Name="FK__Producto___IdRes__6383C8BA" Association="Self.FK__Producto___IdRes__6383C8BA">
       <End Role="Restauracion" EntitySet="Restauracion" />
       <End Role="Producto_Reparacion" EntitySet="Producto_Reparacion" />
     </AssociationSet>

@@ -1,5 +1,6 @@
 create database LosInges
 go 
+
 use LosInges
 create table TipoCliente(
 IdTipoCliente int identity primary key not null,
@@ -38,14 +39,15 @@ create table Departamento(
 IdDepartamento int identity primary key not null,
 Descripcion varchar(25)
 )
---insert into Departamento values ('Mecanico'),('Alineacion y valanceo'),('Electrico'),('Frenos'),('Refacionaria'),('Diagnostico')
+--insert into Departamento values ('Carroceria y pintura'),('Electrico'),('Alineacion y balanceo'),('Suspencion'),('Mecanico'),('Diagnostico'),('Refaccionaria')
 --select *from Departamento
 go
 create table Puesto(
 IdPuesto int identity primary key not null,
 Descripcion varchar (15)
 )
---insert into Puesto values ('Encargado')
+--insert into Puesto values ('Supervisor'),('Especialista'),('Cajero')
+select *from Puesto
 go
 Create table Empleado(
 IdEmpleado int identity primary key not null,
@@ -106,9 +108,9 @@ IdRestauracion int foreign key (IdRestauracion) references Restauracion(IdRestau
  primary key(IdAuto,IdRestauracion) 
 )
 create table Producto_Reparacion(
-IdProducto int foreign key (IdProducto) references Auto(Producto) not null,
+IdProducto int foreign key (IdProducto) references Producto(IdProducto) not null,
 IdRestauracion int foreign key (IdRestauracion) references Restauracion(IdRestauracion)  not null,
-primary key(IdAuto,IdRestauracion)
+primary key(IdProducto,IdRestauracion)
 )
 
 

@@ -16,6 +16,16 @@ namespace LosInges.Controllers
         // GET: Cliente
         public ActionResult Index()
         {
+            ViewBag.ListaCliente = (from lc in db.Cliente
+                                    select new
+                                    {
+                                        IdCliente = lc.IdCliente,
+                                        Nombre = lc.Nombre,
+                                        appat = lc.ApPat,
+                                        apmat = lc.ApMat,
+                                        tel = lc.Telefono,
+                                        correo = lc.Correo
+                                    }).ToList();
             return View();
         }
 
@@ -51,7 +61,7 @@ namespace LosInges.Controllers
                 {
                     //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
                     db.SP_Cliente_Alta(model.Nombre,model.ApPat,model.ApMat,model.Telefono,model.Correo);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Cliente");
                 }
 
             }

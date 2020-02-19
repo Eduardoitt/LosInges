@@ -143,9 +143,7 @@
         <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
       </EndProperty>
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="SP_Cliente_Altaid" FunctionName="LosIngesModel.Store.SP_Cliente_Altaid" />
-    <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
-    <FunctionImportMapping FunctionImportName="Alta_Producto" FunctionName="LosIngesModel.Store.Alta_Producto" />
+    <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
   </EntityContainerMapping>
 </Mapping>
