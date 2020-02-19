@@ -131,5 +131,35 @@ namespace LosInges.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Producto", descripcionParameter, noParteParameter);
         }
+    
+        public virtual int Alta_Empleado(string nombre, string apPat, string apMat, Nullable<int> idDepartamento, Nullable<int> idPuesto)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apPatParameter = apPat != null ?
+                new ObjectParameter("ApPat", apPat) :
+                new ObjectParameter("ApPat", typeof(string));
+    
+            var apMatParameter = apMat != null ?
+                new ObjectParameter("ApMat", apMat) :
+                new ObjectParameter("ApMat", typeof(string));
+    
+            var idDepartamentoParameter = idDepartamento.HasValue ?
+                new ObjectParameter("IdDepartamento", idDepartamento) :
+                new ObjectParameter("IdDepartamento", typeof(int));
+    
+            var idPuestoParameter = idPuesto.HasValue ?
+                new ObjectParameter("IdPuesto", idPuesto) :
+                new ObjectParameter("IdPuesto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Empleado", nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
+        }
+    
+        public virtual ObjectResult<ListaEmpleado_Result> ListaEmpleado()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListaEmpleado_Result>("ListaEmpleado");
+        }
     }
 }

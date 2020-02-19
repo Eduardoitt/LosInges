@@ -36,17 +36,17 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdDepartamento, "IdDepartamento", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdDepartamento", null, htmlAttributes: new { @class = "form-control" })
+            @Html.LabelFor(model => model.IdDepartamento, "IDepartamento", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownListFor(model => model.IdDepartamento, new SelectList(ViewBag.ListDepa, "IdDepa", "DesDepa"), htmlAttributes: new { @class = "custom-select custom-select-md " })
                 @Html.ValidationMessageFor(model => model.IdDepartamento, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.IdPuesto, "IdPuesto", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdPuesto", null, htmlAttributes: new { @class = "form-control" })
+            @Html.LabelFor(model => model.IdPuesto, "Puesto", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-5">
+                @Html.DropDownListFor(model => model.IdPuesto, new SelectList(ViewBag.ListPues, "IdPues", "DesPues"), htmlAttributes: new { @class = "custom-select custom-select-md " })
                 @Html.ValidationMessageFor(model => model.IdPuesto, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,3 +59,40 @@
     </div>
 }
 
+<div class="row" >
+    <div class="col-md-8">
+        <div class="card ">
+            <div class="card-header card-header-info card-header-text">
+                <div class="card-icon">
+                    <i class="material-icons">people</i>
+                </div>
+                <h4 class="card-title">Empleados</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row col-md-12">
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-md-12">
+                        @Html.EJS().Grid("GridEmpleado").DataSource((IEnumerable<object>)ViewBag.ListEmp).RowSelected("EmpleadoSe").AllowFiltering().AllowTextWrap().EnableAutoFill().AllowResizing(true).Columns(col =>
+                   {
+                       col.Field("IdEmp").Visible(false).Add();
+                       col.Field("NomEmp").HeaderText("Descripcion").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                       col.Field("ApPat").HeaderText("NoParte").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                       col.Field("ApMat").HeaderText("NoParte").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                       col.Field("DepaEmp").HeaderText("NoParte").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                       col.Field("PuestoEmp").HeaderText("NoParte").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+
+                   }).AllowPaging().PageSettings(page => { page.PageSize(5); }).Render()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function EmpleadoSe(args) {
+        var grid = document.getElementById("GridEmpleado").ej2_instances[0];
+    }
+</script>

@@ -162,6 +162,9 @@
     <Compile Include="Models\Factura.cs">
       <DependentUpon>LosInges.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListaEmpleado_Result.cs">
+      <DependentUpon>LosInges.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LosInges.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -140,3 +140,54 @@ begin
 end
 */
 
+create procedure Alta_Prod
+@IdCliente int,
+@Nombre varchar(50),
+@ApPat varchar(50),
+@ApMat varchar(50),
+@Telefono varchar(10),
+@Correo varchar(50)
+as
+begin
+		update Cliente set Nombre=@Nombre,ApPat=@ApPat,ApMat=@ApMat,Telefono=@Telefono,Correo=@Correo where IdCliente=@IdCliente
+end
+
+ALTER procedure [dbo].[Alta_Producto]
+@Descripcion varchar(40),
+@NoParte varchar(15)
+as
+begin
+insert into Producto (Descripcion,NoParte)
+	values(@Descripcion,@NoParte)
+end
+
+
+create procedure Alta_Empleado
+@Nombre varchar(30),
+@ApPat varchar(20),
+@ApMat varchar(20),
+@IdDepartamento int,
+@IdPuesto int
+as
+begin
+insert into Empleado (Nombre,ApPat,ApMat,IdDepartamento,IdPuesto)
+	values(@Nombre,@ApPat,@ApMat,@IdDepartamento,@IdPuesto)
+end
+
+select * from empleado
+update Empleado set Nombre='Adrian' ,ApPat='Perez', ApMat='Portillo' , IdDepartamento=3 WHERE IdEmpleado=4
+
+create procedure ListaEmpleado
+as
+begin
+select LE.IdEmpleado,LE.Nombre,LE.ApPat, LE.ApMat,D.Descripcion as DepaEmp,P.Descripcion as PuestoEmp from    Empleado AS LE
+INNER JOIN Departamento AS d on LE.IdDepartamento = d.IdDepartamento
+inner join PUESTO AS P on  LE.IdPuesto = P.IdPuesto
+end
+
+IdEmp = LE.IdEmpleado,
+                                   NomEmp = LE.Nombre,
+                                   ApPat = LE.ApPat,
+                                   ApMat = LE.ApMat,
+                                   DepaEmp = d.Descripcion,
+                                   PuestoEmp = P.Descripcion

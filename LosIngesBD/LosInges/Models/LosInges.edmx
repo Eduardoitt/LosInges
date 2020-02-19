@@ -387,10 +387,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Alta_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApPat" Type="varchar" Mode="In" />
+          <Parameter Name="ApMat" Type="varchar" Mode="In" />
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="IdPuesto" Type="int" Mode="In" />
+        </Function>
         <Function Name="Alta_Producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Descripcion" Type="varchar" Mode="In" />
           <Parameter Name="NoParte" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="ListaEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="SP_Cliente_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="ApPat" Type="varchar" Mode="In" />
@@ -996,7 +1004,23 @@
             <Parameter Name="Descripcion" Mode="In" Type="String" />
             <Parameter Name="NoParte" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="Alta_Empleado">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApPat" Mode="In" Type="String" />
+            <Parameter Name="ApMat" Mode="In" Type="String" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ListaEmpleado" ReturnType="Collection(LosIngesModel.ListaEmpleado_Result)" />
         </EntityContainer>
+        <ComplexType Name="ListaEmpleado_Result">
+          <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ApPat" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ApMat" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DepaEmp" Nullable="true" MaxLength="25" />
+          <Property Type="String" Name="PuestoEmp" Nullable="true" MaxLength="15" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1149,6 +1173,19 @@
           <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
           <FunctionImportMapping FunctionImportName="Alta_Producto" FunctionName="LosIngesModel.Store.Alta_Producto" />
+          <FunctionImportMapping FunctionImportName="Alta_Empleado" FunctionName="LosIngesModel.Store.Alta_Empleado" />
+          <FunctionImportMapping FunctionImportName="ListaEmpleado" FunctionName="LosIngesModel.Store.ListaEmpleado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LosIngesModel.ListaEmpleado_Result">
+                <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ApPat" ColumnName="ApPat" />
+                <ScalarProperty Name="ApMat" ColumnName="ApMat" />
+                <ScalarProperty Name="DepaEmp" ColumnName="DepaEmp" />
+                <ScalarProperty Name="PuestoEmp" ColumnName="PuestoEmp" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
