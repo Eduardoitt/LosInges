@@ -3,72 +3,52 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-//Se agrega el modelo
-using LosInges.Models;
+
 namespace LosInges.Controllers
 {
-    public class ProductosController : Controller
+    public class EmpleadosController : Controller
     {
-        //
-        private LosIngesEntities db= new LosIngesEntities();
-        // GET: Productos
+        // GET: Empleados
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: Productos/Details/5
+        // GET: Empleados/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Productos/Create
+        // GET: Empleados/Create
         public ActionResult Create()
         {
-            ViewBag.ListProducto = (from LP in db.Producto
-                                    select new
-                                    {
-                                        IdProducto = LP.IdProducto,
-                                        Descripcion = LP.Descripcion,
-                                        NoParte = LP.NoParte
-                                    }).ToList();
-            return View("Productos");
+            return View();
         }
 
-        // POST: Productos/Create
+        // POST: Empleados/Create
         [HttpPost]
-        public ActionResult Create(Producto Produc)
+        public ActionResult Create(FormCollection collection)
         {
-
             try
             {
                 // TODO: Add insert logic here
-                if (!ModelState.IsValid)
-                {
-                    return View("Create");
-                }
-                else
-                {
-                    //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
-                    db.Alta_Producto(Produc.Descripcion, Produc.NoParte);
-                    return RedirectToAction("Create", "Productos");
-                }
 
+                return RedirectToAction("Index");
             }
             catch
             {
-                return View("Create");
+                return View();
             }
         }
 
-        // GET: Productos/Edit/5
+        // GET: Empleados/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Productos/Edit/5
+        // POST: Empleados/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
@@ -84,13 +64,13 @@ namespace LosInges.Controllers
             }
         }
 
-        // GET: Productos/Delete/5
+        // GET: Empleados/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Productos/Delete/5
+        // POST: Empleados/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
