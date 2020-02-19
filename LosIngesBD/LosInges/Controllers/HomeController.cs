@@ -12,14 +12,7 @@ namespace LosInges.Controllers
         private LosIngesEntities db = new LosIngesEntities();
         public ActionResult Index()
         {
-            ViewBag.ListaCliente = (from lc in db.Cliente select new { 
-                IdCliente=lc.IdCliente,
-                Nombre=lc.Nombre,
-                appat=lc.ApPat,
-                apmat=lc.ApMat,
-                tel=lc.Telefono,
-                correo=lc.Correo
-            }).ToList();
+            
             return View();
         }
 

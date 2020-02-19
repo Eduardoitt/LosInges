@@ -1,13 +1,14 @@
 ﻿@model LosInges.Models.Cliente
 @{
-    Layout = null;
+     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 
 
 @using (Html.BeginForm("Update", "Cliente", new AjaxOptions { UpdateTargetId = "frmContUp" }))
 {
     
-    <div class="col-md-12">
+    <div class="col-md-8">
         <div class="card ">
             <div class="card-header card-header-rose card-header-icon">
                 <div class="card-icon">

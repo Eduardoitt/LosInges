@@ -468,6 +468,9 @@
     <Content Include="Views\Cliente\Cliente.cshtml" />
     <Content Include="Views\Cliente\Update.cshtml" />
     <Content Include="Views\Productos\Productos.cshtml" />
+
+    <Content Include="Views\Cliente\Index.cshtml" />
+
     <Content Include="Views\Empleados\Empleado.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -40,7 +40,7 @@ namespace LosInges.Models
         public virtual DbSet<Status_Auto> Status_Auto { get; set; }
         public virtual DbSet<TipoCliente> TipoCliente { get; set; }
     
-        public virtual int SP_Cliente_Altaid(string nombre, string apPat, string apMat, string telefono, string correo)
+        public virtual int SP_Cliente_Alta(string nombre, string apPat, string apMat, string telefono, string correo)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
@@ -62,7 +62,7 @@ namespace LosInges.Models
                 new ObjectParameter("Correo", correo) :
                 new ObjectParameter("Correo", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Altaid", nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Alta", nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
         }
     
         public virtual int SP_Cliente_Update(Nullable<int> idCliente, string nombre, string apPat, string apMat, string telefono, string correo)
@@ -93,6 +93,7 @@ namespace LosInges.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Update", idClienteParameter, nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
         }
+<<<<<<< HEAD
     
         public virtual int SP_Cliente_Alta(string nombre, string apPat, string apMat, string telefono, string correo)
         {
@@ -161,5 +162,7 @@ namespace LosInges.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListaEmpleado_Result>("ListaEmpleado");
         }
+=======
+>>>>>>> 27f565c51ae4f7497fa9fcfcfbcc86f1e496e26b
     }
 }

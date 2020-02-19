@@ -51,7 +51,8 @@ namespace LosInges.Controllers
                 else
                 {
                     //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
-                    db.Alta_Producto(Produc.Descripcion, Produc.NoParte);
+
+                    //db.Alta_Producto(Produc.Descripcion, Produc.NoParte);
                     return RedirectToAction("Create", "Productos");
                 }
 

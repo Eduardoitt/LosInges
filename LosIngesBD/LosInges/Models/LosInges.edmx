@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LosIngesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LosIngesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Auto">
           <Key>
             <PropertyRef Name="IdAuto" />
@@ -159,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Auto_Repa__IdAut__6D0D32F4">
+        <Association Name="FK__Auto_Repa__IdAut__5EBF139D">
           <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
           <End Role="Auto_Reparacion" Type="Self.Auto_Reparacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -171,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Auto_Repa__IdRes__6E01572D">
+        <Association Name="FK__Auto_Repa__IdRes__5FB337D6">
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="1" />
           <End Role="Auto_Reparacion" Type="Self.Auto_Reparacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -315,7 +315,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto___IdPro__5EBF139D">
+        <Association Name="FK__Producto___IdPro__628FA481">
           <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
           <End Role="Producto_Reparacion" Type="Self.Producto_Reparacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -327,7 +327,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Producto___IdRes__5FB337D6">
+        <Association Name="FK__Producto___IdRes__6383C8BA">
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="1" />
           <End Role="Producto_Reparacion" Type="Self.Producto_Reparacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -387,6 +387,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+<<<<<<< HEAD
         <Function Name="Alta_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="ApPat" Type="varchar" Mode="In" />
@@ -399,14 +400,9 @@
           <Parameter Name="NoParte" Type="varchar" Mode="In" />
         </Function>
         <Function Name="ListaEmpleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+=======
+>>>>>>> 27f565c51ae4f7497fa9fcfcfbcc86f1e496e26b
         <Function Name="SP_Cliente_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Nombre" Type="varchar" Mode="In" />
-          <Parameter Name="ApPat" Type="varchar" Mode="In" />
-          <Parameter Name="ApMat" Type="varchar" Mode="In" />
-          <Parameter Name="Telefono" Type="varchar" Mode="In" />
-          <Parameter Name="Correo" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="SP_Cliente_Altaid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="ApPat" Type="varchar" Mode="In" />
           <Parameter Name="ApMat" Type="varchar" Mode="In" />
@@ -444,11 +440,11 @@
             <End Role="Status_Auto" EntitySet="Status_Auto" />
             <End Role="Auto" EntitySet="Auto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Auto_Repa__IdAut__6D0D32F4" Association="Self.FK__Auto_Repa__IdAut__6D0D32F4">
+          <AssociationSet Name="FK__Auto_Repa__IdAut__5EBF139D" Association="Self.FK__Auto_Repa__IdAut__5EBF139D">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Auto_Reparacion" EntitySet="Auto_Reparacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Auto_Repa__IdRes__6E01572D" Association="Self.FK__Auto_Repa__IdRes__6E01572D">
+          <AssociationSet Name="FK__Auto_Repa__IdRes__5FB337D6" Association="Self.FK__Auto_Repa__IdRes__5FB337D6">
             <End Role="Restauracion" EntitySet="Restauracion" />
             <End Role="Auto_Reparacion" EntitySet="Auto_Reparacion" />
           </AssociationSet>
@@ -496,11 +492,11 @@
             <End Role="Restauracion" EntitySet="Restauracion" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto___IdPro__5EBF139D" Association="Self.FK__Producto___IdPro__5EBF139D">
+          <AssociationSet Name="FK__Producto___IdPro__628FA481" Association="Self.FK__Producto___IdPro__628FA481">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Producto_Reparacion" EntitySet="Producto_Reparacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Producto___IdRes__5FB337D6" Association="Self.FK__Producto___IdRes__5FB337D6">
+          <AssociationSet Name="FK__Producto___IdRes__6383C8BA" Association="Self.FK__Producto___IdRes__6383C8BA">
             <End Role="Restauracion" EntitySet="Restauracion" />
             <End Role="Producto_Reparacion" EntitySet="Producto_Reparacion" />
           </AssociationSet>
@@ -521,7 +517,8 @@
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LosIngesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -978,7 +975,7 @@
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <FunctionImport Name="SP_Cliente_Altaid">
+          <FunctionImport Name="SP_Cliente_Alta">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="ApPat" Mode="In" Type="String" />
             <Parameter Name="ApMat" Mode="In" Type="String" />
@@ -993,6 +990,7 @@
             <Parameter Name="Telefono" Mode="In" Type="String" />
             <Parameter Name="Correo" Mode="In" Type="String" />
           </FunctionImport>
+<<<<<<< HEAD
           <FunctionImport Name="SP_Cliente_Alta">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="ApPat" Mode="In" Type="String" />
@@ -1012,6 +1010,8 @@
             <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="ListaEmpleado" ReturnType="Collection(LosIngesModel.ListaEmpleado_Result)" />
+=======
+>>>>>>> 27f565c51ae4f7497fa9fcfcfbcc86f1e496e26b
         </EntityContainer>
         <ComplexType Name="ListaEmpleado_Result">
           <Property Type="Int32" Name="IdEmpleado" Nullable="false" />
@@ -1169,9 +1169,8 @@
               <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="SP_Cliente_Altaid" FunctionName="LosIngesModel.Store.SP_Cliente_Altaid" />
-          <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
+<<<<<<< HEAD
           <FunctionImportMapping FunctionImportName="Alta_Producto" FunctionName="LosIngesModel.Store.Alta_Producto" />
           <FunctionImportMapping FunctionImportName="Alta_Empleado" FunctionName="LosIngesModel.Store.Alta_Empleado" />
           <FunctionImportMapping FunctionImportName="ListaEmpleado" FunctionName="LosIngesModel.Store.ListaEmpleado">
@@ -1186,6 +1185,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+=======
+          <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
+>>>>>>> 27f565c51ae4f7497fa9fcfcfbcc86f1e496e26b
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

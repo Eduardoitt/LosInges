@@ -453,7 +453,7 @@
       <End Role="Producto" EntitySet="Producto" />
       <End Role="Restauracion" EntitySet="Restauracion" />
     </AssociationSet>
-    <FunctionImport Name="SP_Cliente_Altaid">
+    <FunctionImport Name="SP_Cliente_Alta">
       <Parameter Name="Nombre" Mode="In" Type="String" />
       <Parameter Name="ApPat" Mode="In" Type="String" />
       <Parameter Name="ApMat" Mode="In" Type="String" />
@@ -468,6 +468,7 @@
       <Parameter Name="Telefono" Mode="In" Type="String" />
       <Parameter Name="Correo" Mode="In" Type="String" />
     </FunctionImport>
+<<<<<<< HEAD
     <FunctionImport Name="SP_Cliente_Alta">
       <Parameter Name="Nombre" Mode="In" Type="String" />
       <Parameter Name="ApPat" Mode="In" Type="String" />
@@ -486,5 +487,7 @@
       <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
       <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
     </FunctionImport>
+=======
+>>>>>>> 27f565c51ae4f7497fa9fcfcfbcc86f1e496e26b
   </EntityContainer>
 </Schema>
