@@ -19,6 +19,7 @@ namespace LosInges.Models
         {
             this.Factura = new HashSet<Factura>();
             this.Restauracion = new HashSet<Restauracion>();
+            this.Restauracion1 = new HashSet<Restauracion>();
         }
     
         public int IdProducto { get; set; }
@@ -29,5 +30,7 @@ namespace LosInges.Models
         public virtual ICollection<Factura> Factura { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Restauracion> Restauracion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Restauracion> Restauracion1 { get; set; }
     }
 }

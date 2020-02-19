@@ -85,6 +85,14 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="40" />
           <Property Name="NoParte" Type="varchar" MaxLength="15" />
         </EntityType>
+        <EntityType Name="Producto_Reparacion">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+            <PropertyRef Name="IdRestauracion" />
+          </Key>
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="IdRestauracion" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Promocion">
           <Key>
             <PropertyRef Name="IdPromocion" />
@@ -127,7 +135,7 @@
           <Property Name="IdTipoCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="15" />
         </EntityType>
-        <Association Name="FK__Auto__IdCliente__5165187F">
+        <Association Name="FK__Auto__IdCliente__3F466844">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -139,7 +147,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Auto__IdStatus_A__5070F446">
+        <Association Name="FK__Auto__IdStatus_A__3E52440B">
           <End Role="Status_Auto" Type="Self.Status_Auto" Multiplicity="0..1" />
           <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -151,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Auto_Repa__IdAut__7C4F7684">
+        <Association Name="FK__Auto_Repa__IdAut__6D0D32F4">
           <End Role="Auto" Type="Self.Auto" Multiplicity="1" />
           <End Role="Auto_Reparacion" Type="Self.Auto_Reparacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -163,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Auto_Repa__IdRes__7D439ABD">
+        <Association Name="FK__Auto_Repa__IdRes__6E01572D">
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="1" />
           <End Role="Auto_Reparacion" Type="Self.Auto_Reparacion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -175,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cliente__IdTipoC__4BAC3F29">
+        <Association Name="FK__Cliente__IdTipoC__398D8EEE">
           <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -187,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__IdAut__5BE2A6F2">
+        <Association Name="FK__Diagnosti__IdAut__49C3F6B7">
           <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
           <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -199,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__IdEmp__5CD6CB2B">
+        <Association Name="FK__Diagnosti__IdEmp__4AB81AF0">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -211,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__IdDepa__5812160E">
+        <Association Name="FK__Empleado__IdDepa__45F365D3">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -223,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__IdPues__59063A47">
+        <Association Name="FK__Empleado__IdPues__46E78A0C">
           <End Role="Puesto" Type="Self.Puesto" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -235,7 +243,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdAuto__693CA210">
+        <Association Name="FK__Factura__IdAuto__571DF1D5">
           <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -247,7 +255,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdClien__6A30C649">
+        <Association Name="FK__Factura__IdClien__5812160E">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -259,7 +267,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdEmple__6E01572D">
+        <Association Name="FK__Factura__IdEmple__5BE2A6F2">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -271,7 +279,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdProdu__6C190EBB">
+        <Association Name="FK__Factura__IdProdu__59FA5E80">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -283,7 +291,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdPromo__6D0D32F4">
+        <Association Name="FK__Factura__IdPromo__5AEE82B9">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -295,7 +303,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdResta__6B24EA82">
+        <Association Name="FK__Factura__IdResta__59063A47">
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -307,7 +315,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdAut__6383C8BA">
+        <Association Name="FK__Producto___IdPro__5EBF139D">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+          <End Role="Producto_Reparacion" Type="Self.Producto_Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Producto">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="Producto_Reparacion">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Producto___IdRes__5FB337D6">
+          <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="1" />
+          <End Role="Producto_Reparacion" Type="Self.Producto_Reparacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Restauracion">
+              <PropertyRef Name="IdRestauracion" />
+            </Principal>
+            <Dependent Role="Producto_Reparacion">
+              <PropertyRef Name="IdRestauracion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Restaurac__IdAut__5165187F">
           <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -319,7 +351,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdDep__656C112C">
+        <Association Name="FK__Restaurac__IdDep__534D60F1">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -331,7 +363,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdEmp__6477ECF3">
+        <Association Name="FK__Restaurac__IdEmp__52593CB8">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -343,7 +375,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdPro__66603565">
+        <Association Name="FK__Restaurac__IdPro__5441852A">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -355,7 +387,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Alta_Producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="NoParte" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_Cliente_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApPat" Type="varchar" Mode="In" />
+          <Parameter Name="ApMat" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Cliente_Altaid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="ApPat" Type="varchar" Mode="In" />
           <Parameter Name="ApMat" Type="varchar" Mode="In" />
@@ -379,84 +422,93 @@
           <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Producto_Reparacion" EntityType="Self.Producto_Reparacion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Promocion" EntityType="Self.Promocion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Puesto" EntityType="Self.Puesto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Restauracion" EntityType="Self.Restauracion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status_Auto" EntityType="Self.Status_Auto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Auto__IdCliente__5165187F" Association="Self.FK__Auto__IdCliente__5165187F">
+          <AssociationSet Name="FK__Auto__IdCliente__3F466844" Association="Self.FK__Auto__IdCliente__3F466844">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Auto" EntitySet="Auto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Auto__IdStatus_A__5070F446" Association="Self.FK__Auto__IdStatus_A__5070F446">
+          <AssociationSet Name="FK__Auto__IdStatus_A__3E52440B" Association="Self.FK__Auto__IdStatus_A__3E52440B">
             <End Role="Status_Auto" EntitySet="Status_Auto" />
             <End Role="Auto" EntitySet="Auto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Auto_Repa__IdAut__7C4F7684" Association="Self.FK__Auto_Repa__IdAut__7C4F7684">
+          <AssociationSet Name="FK__Auto_Repa__IdAut__6D0D32F4" Association="Self.FK__Auto_Repa__IdAut__6D0D32F4">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Auto_Reparacion" EntitySet="Auto_Reparacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Auto_Repa__IdRes__7D439ABD" Association="Self.FK__Auto_Repa__IdRes__7D439ABD">
+          <AssociationSet Name="FK__Auto_Repa__IdRes__6E01572D" Association="Self.FK__Auto_Repa__IdRes__6E01572D">
             <End Role="Restauracion" EntitySet="Restauracion" />
             <End Role="Auto_Reparacion" EntitySet="Auto_Reparacion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cliente__IdTipoC__4BAC3F29" Association="Self.FK__Cliente__IdTipoC__4BAC3F29">
+          <AssociationSet Name="FK__Cliente__IdTipoC__398D8EEE" Association="Self.FK__Cliente__IdTipoC__398D8EEE">
             <End Role="TipoCliente" EntitySet="TipoCliente" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__IdAut__5BE2A6F2" Association="Self.FK__Diagnosti__IdAut__5BE2A6F2">
+          <AssociationSet Name="FK__Diagnosti__IdAut__49C3F6B7" Association="Self.FK__Diagnosti__IdAut__49C3F6B7">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Diagnostico" EntitySet="Diagnostico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__IdEmp__5CD6CB2B" Association="Self.FK__Diagnosti__IdEmp__5CD6CB2B">
+          <AssociationSet Name="FK__Diagnosti__IdEmp__4AB81AF0" Association="Self.FK__Diagnosti__IdEmp__4AB81AF0">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Diagnostico" EntitySet="Diagnostico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__IdDepa__5812160E" Association="Self.FK__Empleado__IdDepa__5812160E">
+          <AssociationSet Name="FK__Empleado__IdDepa__45F365D3" Association="Self.FK__Empleado__IdDepa__45F365D3">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__IdPues__59063A47" Association="Self.FK__Empleado__IdPues__59063A47">
+          <AssociationSet Name="FK__Empleado__IdPues__46E78A0C" Association="Self.FK__Empleado__IdPues__46E78A0C">
             <End Role="Puesto" EntitySet="Puesto" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdAuto__693CA210" Association="Self.FK__Factura__IdAuto__693CA210">
+          <AssociationSet Name="FK__Factura__IdAuto__571DF1D5" Association="Self.FK__Factura__IdAuto__571DF1D5">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdClien__6A30C649" Association="Self.FK__Factura__IdClien__6A30C649">
+          <AssociationSet Name="FK__Factura__IdClien__5812160E" Association="Self.FK__Factura__IdClien__5812160E">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdEmple__6E01572D" Association="Self.FK__Factura__IdEmple__6E01572D">
+          <AssociationSet Name="FK__Factura__IdEmple__5BE2A6F2" Association="Self.FK__Factura__IdEmple__5BE2A6F2">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdProdu__6C190EBB" Association="Self.FK__Factura__IdProdu__6C190EBB">
+          <AssociationSet Name="FK__Factura__IdProdu__59FA5E80" Association="Self.FK__Factura__IdProdu__59FA5E80">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdPromo__6D0D32F4" Association="Self.FK__Factura__IdPromo__6D0D32F4">
+          <AssociationSet Name="FK__Factura__IdPromo__5AEE82B9" Association="Self.FK__Factura__IdPromo__5AEE82B9">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdResta__6B24EA82" Association="Self.FK__Factura__IdResta__6B24EA82">
+          <AssociationSet Name="FK__Factura__IdResta__59063A47" Association="Self.FK__Factura__IdResta__59063A47">
             <End Role="Restauracion" EntitySet="Restauracion" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdAut__6383C8BA" Association="Self.FK__Restaurac__IdAut__6383C8BA">
+          <AssociationSet Name="FK__Producto___IdPro__5EBF139D" Association="Self.FK__Producto___IdPro__5EBF139D">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Producto_Reparacion" EntitySet="Producto_Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Producto___IdRes__5FB337D6" Association="Self.FK__Producto___IdRes__5FB337D6">
+            <End Role="Restauracion" EntitySet="Restauracion" />
+            <End Role="Producto_Reparacion" EntitySet="Producto_Reparacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Restaurac__IdAut__5165187F" Association="Self.FK__Restaurac__IdAut__5165187F">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdDep__656C112C" Association="Self.FK__Restaurac__IdDep__656C112C">
+          <AssociationSet Name="FK__Restaurac__IdDep__534D60F1" Association="Self.FK__Restaurac__IdDep__534D60F1">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdEmp__6477ECF3" Association="Self.FK__Restaurac__IdEmp__6477ECF3">
+          <AssociationSet Name="FK__Restaurac__IdEmp__52593CB8" Association="Self.FK__Restaurac__IdEmp__52593CB8">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdPro__66603565" Association="Self.FK__Restaurac__IdPro__66603565">
+          <AssociationSet Name="FK__Restaurac__IdPro__5441852A" Association="Self.FK__Restaurac__IdPro__5441852A">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
@@ -475,11 +527,11 @@
           <Property Name="Marca" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Modelo" Type="Int32" />
           <Property Name="IdCliente" Type="Int32" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Auto__IdCliente__5165187F" FromRole="Auto" ToRole="Cliente" />
-          <NavigationProperty Name="Status_Auto" Relationship="Self.FK__Auto__IdStatus_A__5070F446" FromRole="Auto" ToRole="Status_Auto" />
-          <NavigationProperty Name="Diagnostico" Relationship="Self.FK__Diagnosti__IdAut__5BE2A6F2" FromRole="Auto" ToRole="Diagnostico" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdAuto__693CA210" FromRole="Auto" ToRole="Factura" />
-          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdAut__6383C8BA" FromRole="Auto" ToRole="Restauracion" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Auto__IdCliente__3F466844" FromRole="Auto" ToRole="Cliente" />
+          <NavigationProperty Name="Status_Auto" Relationship="Self.FK__Auto__IdStatus_A__3E52440B" FromRole="Auto" ToRole="Status_Auto" />
+          <NavigationProperty Name="Diagnostico" Relationship="Self.FK__Diagnosti__IdAut__49C3F6B7" FromRole="Auto" ToRole="Diagnostico" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdAuto__571DF1D5" FromRole="Auto" ToRole="Factura" />
+          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdAut__5165187F" FromRole="Auto" ToRole="Restauracion" />
           <NavigationProperty Name="Restauracion1" Relationship="Self.Auto_Reparacion" FromRole="Auto" ToRole="Restauracion" />
         </EntityType>
         <EntityType Name="Cliente">
@@ -493,9 +545,9 @@
           <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Correo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="IdTipoCliente" Type="Int32" />
-          <NavigationProperty Name="Auto" Relationship="Self.FK__Auto__IdCliente__5165187F" FromRole="Cliente" ToRole="Auto" />
-          <NavigationProperty Name="TipoCliente" Relationship="Self.FK__Cliente__IdTipoC__4BAC3F29" FromRole="Cliente" ToRole="TipoCliente" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdClien__6A30C649" FromRole="Cliente" ToRole="Factura" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK__Auto__IdCliente__3F466844" FromRole="Cliente" ToRole="Auto" />
+          <NavigationProperty Name="TipoCliente" Relationship="Self.FK__Cliente__IdTipoC__398D8EEE" FromRole="Cliente" ToRole="TipoCliente" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdClien__5812160E" FromRole="Cliente" ToRole="Factura" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -503,8 +555,8 @@
           </Key>
           <Property Name="IdDepartamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__IdDepa__5812160E" FromRole="Departamento" ToRole="Empleado" />
-          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdDep__656C112C" FromRole="Departamento" ToRole="Restauracion" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__IdDepa__45F365D3" FromRole="Departamento" ToRole="Empleado" />
+          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdDep__534D60F1" FromRole="Departamento" ToRole="Restauracion" />
         </EntityType>
         <EntityType Name="Diagnostico">
           <Key>
@@ -513,8 +565,8 @@
           <Property Name="IdDiagnostico" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdAuto" Type="Int32" />
           <Property Name="IdEmpleado" Type="Int32" />
-          <NavigationProperty Name="Auto" Relationship="Self.FK__Diagnosti__IdAut__5BE2A6F2" FromRole="Diagnostico" ToRole="Auto" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Diagnosti__IdEmp__5CD6CB2B" FromRole="Diagnostico" ToRole="Empleado" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK__Diagnosti__IdAut__49C3F6B7" FromRole="Diagnostico" ToRole="Auto" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Diagnosti__IdEmp__4AB81AF0" FromRole="Diagnostico" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -526,11 +578,11 @@
           <Property Name="ApMat" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="IdDepartamento" Type="Int32" />
           <Property Name="IdPuesto" Type="Int32" />
-          <NavigationProperty Name="Departamento" Relationship="Self.FK__Empleado__IdDepa__5812160E" FromRole="Empleado" ToRole="Departamento" />
-          <NavigationProperty Name="Diagnostico" Relationship="Self.FK__Diagnosti__IdEmp__5CD6CB2B" FromRole="Empleado" ToRole="Diagnostico" />
-          <NavigationProperty Name="Puesto" Relationship="Self.FK__Empleado__IdPues__59063A47" FromRole="Empleado" ToRole="Puesto" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdEmple__6E01572D" FromRole="Empleado" ToRole="Factura" />
-          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdEmp__6477ECF3" FromRole="Empleado" ToRole="Restauracion" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Empleado__IdDepa__45F365D3" FromRole="Empleado" ToRole="Departamento" />
+          <NavigationProperty Name="Diagnostico" Relationship="Self.FK__Diagnosti__IdEmp__4AB81AF0" FromRole="Empleado" ToRole="Diagnostico" />
+          <NavigationProperty Name="Puesto" Relationship="Self.FK__Empleado__IdPues__46E78A0C" FromRole="Empleado" ToRole="Puesto" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdEmple__5BE2A6F2" FromRole="Empleado" ToRole="Factura" />
+          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdEmp__52593CB8" FromRole="Empleado" ToRole="Restauracion" />
         </EntityType>
         <EntityType Name="Factura">
           <Key>
@@ -546,12 +598,12 @@
           <Property Name="SubTotal" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="Total" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="FechaExpedicion" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Auto" Relationship="Self.FK__Factura__IdAuto__693CA210" FromRole="Factura" ToRole="Auto" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Factura__IdClien__6A30C649" FromRole="Factura" ToRole="Cliente" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Factura__IdEmple__6E01572D" FromRole="Factura" ToRole="Empleado" />
-          <NavigationProperty Name="Producto" Relationship="Self.FK__Factura__IdProdu__6C190EBB" FromRole="Factura" ToRole="Producto" />
-          <NavigationProperty Name="Promocion" Relationship="Self.FK__Factura__IdPromo__6D0D32F4" FromRole="Factura" ToRole="Promocion" />
-          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Factura__IdResta__6B24EA82" FromRole="Factura" ToRole="Restauracion" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK__Factura__IdAuto__571DF1D5" FromRole="Factura" ToRole="Auto" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Factura__IdClien__5812160E" FromRole="Factura" ToRole="Cliente" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Factura__IdEmple__5BE2A6F2" FromRole="Factura" ToRole="Empleado" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Factura__IdProdu__59FA5E80" FromRole="Factura" ToRole="Producto" />
+          <NavigationProperty Name="Promocion" Relationship="Self.FK__Factura__IdPromo__5AEE82B9" FromRole="Factura" ToRole="Promocion" />
+          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Factura__IdResta__59063A47" FromRole="Factura" ToRole="Restauracion" />
         </EntityType>
         <EntityType Name="Producto">
           <Key>
@@ -560,8 +612,9 @@
           <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
           <Property Name="NoParte" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdProdu__6C190EBB" FromRole="Producto" ToRole="Factura" />
-          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdPro__66603565" FromRole="Producto" ToRole="Restauracion" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdProdu__59FA5E80" FromRole="Producto" ToRole="Factura" />
+          <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdPro__5441852A" FromRole="Producto" ToRole="Restauracion" />
+          <NavigationProperty Name="Restauracion1" Relationship="Self.Producto_Reparacion" FromRole="Producto" ToRole="Restauracion" />
         </EntityType>
         <EntityType Name="Promocion">
           <Key>
@@ -571,7 +624,7 @@
           <Property Name="Promocion1" Type="Int32" />
           <Property Name="FechaInicio" Type="DateTime" Precision="0" />
           <Property Name="Fechavenchimiento" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdPromo__6D0D32F4" FromRole="Promocion" ToRole="Factura" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdPromo__5AEE82B9" FromRole="Promocion" ToRole="Factura" />
         </EntityType>
         <EntityType Name="Puesto">
           <Key>
@@ -579,7 +632,7 @@
           </Key>
           <Property Name="IdPuesto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__IdPues__59063A47" FromRole="Puesto" ToRole="Empleado" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Empleado__IdPues__46E78A0C" FromRole="Puesto" ToRole="Empleado" />
         </EntityType>
         <EntityType Name="Restauracion">
           <Key>
@@ -592,12 +645,13 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PrecioRestauracion" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="IdProducto" Type="Int32" />
-          <NavigationProperty Name="Auto" Relationship="Self.FK__Restaurac__IdAut__6383C8BA" FromRole="Restauracion" ToRole="Auto" />
-          <NavigationProperty Name="Departamento" Relationship="Self.FK__Restaurac__IdDep__656C112C" FromRole="Restauracion" ToRole="Departamento" />
-          <NavigationProperty Name="Empleado" Relationship="Self.FK__Restaurac__IdEmp__6477ECF3" FromRole="Restauracion" ToRole="Empleado" />
-          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdResta__6B24EA82" FromRole="Restauracion" ToRole="Factura" />
-          <NavigationProperty Name="Producto" Relationship="Self.FK__Restaurac__IdPro__66603565" FromRole="Restauracion" ToRole="Producto" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK__Restaurac__IdAut__5165187F" FromRole="Restauracion" ToRole="Auto" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK__Restaurac__IdDep__534D60F1" FromRole="Restauracion" ToRole="Departamento" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK__Restaurac__IdEmp__52593CB8" FromRole="Restauracion" ToRole="Empleado" />
+          <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdResta__59063A47" FromRole="Restauracion" ToRole="Factura" />
+          <NavigationProperty Name="Producto" Relationship="Self.FK__Restaurac__IdPro__5441852A" FromRole="Restauracion" ToRole="Producto" />
           <NavigationProperty Name="Auto1" Relationship="Self.Auto_Reparacion" FromRole="Restauracion" ToRole="Auto" />
+          <NavigationProperty Name="Producto1" Relationship="Self.Producto_Reparacion" FromRole="Restauracion" ToRole="Producto" />
         </EntityType>
         <EntityType Name="Status_Auto">
           <Key>
@@ -605,7 +659,7 @@
           </Key>
           <Property Name="IdStatus_Auto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Auto" Relationship="Self.FK__Auto__IdStatus_A__5070F446" FromRole="Status_Auto" ToRole="Auto" />
+          <NavigationProperty Name="Auto" Relationship="Self.FK__Auto__IdStatus_A__3E52440B" FromRole="Status_Auto" ToRole="Auto" />
         </EntityType>
         <EntityType Name="TipoCliente">
           <Key>
@@ -613,9 +667,9 @@
           </Key>
           <Property Name="IdTipoCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Descripcion" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__IdTipoC__4BAC3F29" FromRole="TipoCliente" ToRole="Cliente" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK__Cliente__IdTipoC__398D8EEE" FromRole="TipoCliente" ToRole="Cliente" />
         </EntityType>
-        <Association Name="FK__Auto__IdCliente__5165187F">
+        <Association Name="FK__Auto__IdCliente__3F466844">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -627,7 +681,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Auto__IdStatus_A__5070F446">
+        <Association Name="FK__Auto__IdStatus_A__3E52440B">
           <End Role="Status_Auto" Type="Self.Status_Auto" Multiplicity="0..1" />
           <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
           <ReferentialConstraint>
@@ -639,7 +693,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__IdAut__5BE2A6F2">
+        <Association Name="FK__Diagnosti__IdAut__49C3F6B7">
           <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
           <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -651,7 +705,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdAuto__693CA210">
+        <Association Name="FK__Factura__IdAuto__571DF1D5">
           <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -663,7 +717,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdAut__6383C8BA">
+        <Association Name="FK__Restaurac__IdAut__5165187F">
           <End Role="Auto" Type="Self.Auto" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -675,7 +729,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Cliente__IdTipoC__4BAC3F29">
+        <Association Name="FK__Cliente__IdTipoC__398D8EEE">
           <End Role="TipoCliente" Type="Self.TipoCliente" Multiplicity="0..1" />
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
           <ReferentialConstraint>
@@ -687,7 +741,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdClien__6A30C649">
+        <Association Name="FK__Factura__IdClien__5812160E">
           <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -699,7 +753,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__IdDepa__5812160E">
+        <Association Name="FK__Empleado__IdDepa__45F365D3">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -711,7 +765,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdDep__656C112C">
+        <Association Name="FK__Restaurac__IdDep__534D60F1">
           <End Role="Departamento" Type="Self.Departamento" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -723,7 +777,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Diagnosti__IdEmp__5CD6CB2B">
+        <Association Name="FK__Diagnosti__IdEmp__4AB81AF0">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Diagnostico" Type="Self.Diagnostico" Multiplicity="*" />
           <ReferentialConstraint>
@@ -735,7 +789,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Empleado__IdPues__59063A47">
+        <Association Name="FK__Empleado__IdPues__46E78A0C">
           <End Role="Puesto" Type="Self.Puesto" Multiplicity="0..1" />
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
           <ReferentialConstraint>
@@ -747,7 +801,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdEmple__6E01572D">
+        <Association Name="FK__Factura__IdEmple__5BE2A6F2">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -759,7 +813,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdEmp__6477ECF3">
+        <Association Name="FK__Restaurac__IdEmp__52593CB8">
           <End Role="Empleado" Type="Self.Empleado" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -771,7 +825,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdProdu__6C190EBB">
+        <Association Name="FK__Factura__IdProdu__59FA5E80">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -783,7 +837,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdPromo__6D0D32F4">
+        <Association Name="FK__Factura__IdPromo__5AEE82B9">
           <End Role="Promocion" Type="Self.Promocion" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -795,7 +849,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Factura__IdResta__6B24EA82">
+        <Association Name="FK__Factura__IdResta__59063A47">
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="0..1" />
           <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
           <ReferentialConstraint>
@@ -807,7 +861,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Restaurac__IdPro__66603565">
+        <Association Name="FK__Restaurac__IdPro__5441852A">
           <End Role="Producto" Type="Self.Producto" Multiplicity="0..1" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
           <ReferentialConstraint>
@@ -823,6 +877,10 @@
           <End Role="Auto" Type="Self.Auto" Multiplicity="*" />
           <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
         </Association>
+        <Association Name="Producto_Reparacion">
+          <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+          <End Role="Restauracion" Type="Self.Restauracion" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="LosIngesEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Auto" EntityType="Self.Auto" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
@@ -836,71 +894,71 @@
           <EntitySet Name="Restauracion" EntityType="Self.Restauracion" />
           <EntitySet Name="Status_Auto" EntityType="Self.Status_Auto" />
           <EntitySet Name="TipoCliente" EntityType="Self.TipoCliente" />
-          <AssociationSet Name="FK__Auto__IdCliente__5165187F" Association="Self.FK__Auto__IdCliente__5165187F">
+          <AssociationSet Name="FK__Auto__IdCliente__3F466844" Association="Self.FK__Auto__IdCliente__3F466844">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Auto" EntitySet="Auto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Auto__IdStatus_A__5070F446" Association="Self.FK__Auto__IdStatus_A__5070F446">
+          <AssociationSet Name="FK__Auto__IdStatus_A__3E52440B" Association="Self.FK__Auto__IdStatus_A__3E52440B">
             <End Role="Status_Auto" EntitySet="Status_Auto" />
             <End Role="Auto" EntitySet="Auto" />
           </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__IdAut__5BE2A6F2" Association="Self.FK__Diagnosti__IdAut__5BE2A6F2">
+          <AssociationSet Name="FK__Diagnosti__IdAut__49C3F6B7" Association="Self.FK__Diagnosti__IdAut__49C3F6B7">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Diagnostico" EntitySet="Diagnostico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdAuto__693CA210" Association="Self.FK__Factura__IdAuto__693CA210">
+          <AssociationSet Name="FK__Factura__IdAuto__571DF1D5" Association="Self.FK__Factura__IdAuto__571DF1D5">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdAut__6383C8BA" Association="Self.FK__Restaurac__IdAut__6383C8BA">
+          <AssociationSet Name="FK__Restaurac__IdAut__5165187F" Association="Self.FK__Restaurac__IdAut__5165187F">
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Cliente__IdTipoC__4BAC3F29" Association="Self.FK__Cliente__IdTipoC__4BAC3F29">
+          <AssociationSet Name="FK__Cliente__IdTipoC__398D8EEE" Association="Self.FK__Cliente__IdTipoC__398D8EEE">
             <End Role="TipoCliente" EntitySet="TipoCliente" />
             <End Role="Cliente" EntitySet="Cliente" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdClien__6A30C649" Association="Self.FK__Factura__IdClien__6A30C649">
+          <AssociationSet Name="FK__Factura__IdClien__5812160E" Association="Self.FK__Factura__IdClien__5812160E">
             <End Role="Cliente" EntitySet="Cliente" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__IdDepa__5812160E" Association="Self.FK__Empleado__IdDepa__5812160E">
+          <AssociationSet Name="FK__Empleado__IdDepa__45F365D3" Association="Self.FK__Empleado__IdDepa__45F365D3">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdDep__656C112C" Association="Self.FK__Restaurac__IdDep__656C112C">
+          <AssociationSet Name="FK__Restaurac__IdDep__534D60F1" Association="Self.FK__Restaurac__IdDep__534D60F1">
             <End Role="Departamento" EntitySet="Departamento" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Diagnosti__IdEmp__5CD6CB2B" Association="Self.FK__Diagnosti__IdEmp__5CD6CB2B">
+          <AssociationSet Name="FK__Diagnosti__IdEmp__4AB81AF0" Association="Self.FK__Diagnosti__IdEmp__4AB81AF0">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Diagnostico" EntitySet="Diagnostico" />
           </AssociationSet>
-          <AssociationSet Name="FK__Empleado__IdPues__59063A47" Association="Self.FK__Empleado__IdPues__59063A47">
+          <AssociationSet Name="FK__Empleado__IdPues__46E78A0C" Association="Self.FK__Empleado__IdPues__46E78A0C">
             <End Role="Puesto" EntitySet="Puesto" />
             <End Role="Empleado" EntitySet="Empleado" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdEmple__6E01572D" Association="Self.FK__Factura__IdEmple__6E01572D">
+          <AssociationSet Name="FK__Factura__IdEmple__5BE2A6F2" Association="Self.FK__Factura__IdEmple__5BE2A6F2">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdEmp__6477ECF3" Association="Self.FK__Restaurac__IdEmp__6477ECF3">
+          <AssociationSet Name="FK__Restaurac__IdEmp__52593CB8" Association="Self.FK__Restaurac__IdEmp__52593CB8">
             <End Role="Empleado" EntitySet="Empleado" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdProdu__6C190EBB" Association="Self.FK__Factura__IdProdu__6C190EBB">
+          <AssociationSet Name="FK__Factura__IdProdu__59FA5E80" Association="Self.FK__Factura__IdProdu__59FA5E80">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdPromo__6D0D32F4" Association="Self.FK__Factura__IdPromo__6D0D32F4">
+          <AssociationSet Name="FK__Factura__IdPromo__5AEE82B9" Association="Self.FK__Factura__IdPromo__5AEE82B9">
             <End Role="Promocion" EntitySet="Promocion" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Factura__IdResta__6B24EA82" Association="Self.FK__Factura__IdResta__6B24EA82">
+          <AssociationSet Name="FK__Factura__IdResta__59063A47" Association="Self.FK__Factura__IdResta__59063A47">
             <End Role="Restauracion" EntitySet="Restauracion" />
             <End Role="Factura" EntitySet="Factura" />
           </AssociationSet>
-          <AssociationSet Name="FK__Restaurac__IdPro__66603565" Association="Self.FK__Restaurac__IdPro__66603565">
+          <AssociationSet Name="FK__Restaurac__IdPro__5441852A" Association="Self.FK__Restaurac__IdPro__5441852A">
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
@@ -908,7 +966,11 @@
             <End Role="Auto" EntitySet="Auto" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
-          <FunctionImport Name="SP_Cliente_Alta">
+          <AssociationSet Name="Producto_Reparacion" Association="Self.Producto_Reparacion">
+            <End Role="Producto" EntitySet="Producto" />
+            <End Role="Restauracion" EntitySet="Restauracion" />
+          </AssociationSet>
+          <FunctionImport Name="SP_Cliente_Altaid">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="ApPat" Mode="In" Type="String" />
             <Parameter Name="ApMat" Mode="In" Type="String" />
@@ -922,6 +984,17 @@
             <Parameter Name="ApMat" Mode="In" Type="String" />
             <Parameter Name="Telefono" Mode="In" Type="String" />
             <Parameter Name="Correo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Cliente_Alta">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApPat" Mode="In" Type="String" />
+            <Parameter Name="ApMat" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Alta_Producto">
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="NoParte" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1064,8 +1137,18 @@
               <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
+          <AssociationSetMapping Name="Producto_Reparacion" TypeName="LosIngesModel.Producto_Reparacion" StoreEntitySet="Producto_Reparacion">
+            <EndProperty Name="Producto">
+              <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+            </EndProperty>
+            <EndProperty Name="Restauracion">
+              <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="SP_Cliente_Altaid" FunctionName="LosIngesModel.Store.SP_Cliente_Altaid" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
+          <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
+          <FunctionImportMapping FunctionImportName="Alta_Producto" FunctionName="LosIngesModel.Store.Alta_Producto" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

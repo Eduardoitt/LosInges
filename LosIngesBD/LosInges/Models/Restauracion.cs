@@ -19,6 +19,7 @@ namespace LosInges.Models
         {
             this.Factura = new HashSet<Factura>();
             this.Auto1 = new HashSet<Auto>();
+            this.Producto1 = new HashSet<Producto>();
         }
     
         public int IdRestauracion { get; set; }
@@ -37,5 +38,7 @@ namespace LosInges.Models
         public virtual Producto Producto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auto> Auto1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Producto> Producto1 { get; set; }
     }
 }
