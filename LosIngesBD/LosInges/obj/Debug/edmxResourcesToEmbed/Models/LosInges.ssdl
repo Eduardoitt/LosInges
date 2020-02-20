@@ -405,6 +405,14 @@
     <Parameter Name="Telefono" Type="varchar" Mode="In" />
     <Parameter Name="Correo" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="SP_Empleado_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="ApPat" Type="varchar" Mode="In" />
+    <Parameter Name="ApMat" Type="varchar" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="IdPuesto" Type="int" Mode="In" />
+  </Function>
   <EntityContainer Name="LosIngesModelStoreContainer">
     <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Auto_Reparacion" EntityType="Self.Auto_Reparacion" Schema="dbo" store:Type="Tables" />

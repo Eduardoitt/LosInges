@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="LosIngesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="LosIngesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Auto">
           <Key>
             <PropertyRef Name="IdAuto" />
@@ -410,6 +410,14 @@
           <Parameter Name="Telefono" Type="varchar" Mode="In" />
           <Parameter Name="Correo" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SP_Empleado_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApPat" Type="varchar" Mode="In" />
+          <Parameter Name="ApMat" Type="varchar" Mode="In" />
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="IdPuesto" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="LosIngesModelStoreContainer">
           <EntitySet Name="Auto" EntityType="Self.Auto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Auto_Reparacion" EntityType="Self.Auto_Reparacion" Schema="dbo" store:Type="Tables" />
@@ -510,8 +518,7 @@
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LosIngesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -991,6 +998,14 @@
             <Parameter Name="Telefono" Mode="In" Type="String" />
             <Parameter Name="Correo" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="SP_Empleado_Update">
+            <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApPat" Mode="In" Type="String" />
+            <Parameter Name="ApMat" Mode="In" Type="String" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -1144,6 +1159,7 @@
           <FunctionImportMapping FunctionImportName="SP_Auto_Alta" FunctionName="LosIngesModel.Store.SP_Auto_Alta" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
+          <FunctionImportMapping FunctionImportName="SP_Empleado_Update" FunctionName="LosIngesModel.Store.SP_Empleado_Update" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

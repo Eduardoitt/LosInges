@@ -118,5 +118,34 @@ namespace LosInges.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Update", idClienteParameter, nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
         }
+    
+        public virtual int SP_Empleado_Update(Nullable<int> idEmpleado, string nombre, string apPat, string apMat, Nullable<int> idDepartamento, Nullable<int> idPuesto)
+        {
+            var idEmpleadoParameter = idEmpleado.HasValue ?
+                new ObjectParameter("IdEmpleado", idEmpleado) :
+                new ObjectParameter("IdEmpleado", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apPatParameter = apPat != null ?
+                new ObjectParameter("ApPat", apPat) :
+                new ObjectParameter("ApPat", typeof(string));
+    
+            var apMatParameter = apMat != null ?
+                new ObjectParameter("ApMat", apMat) :
+                new ObjectParameter("ApMat", typeof(string));
+    
+            var idDepartamentoParameter = idDepartamento.HasValue ?
+                new ObjectParameter("IdDepartamento", idDepartamento) :
+                new ObjectParameter("IdDepartamento", typeof(int));
+    
+            var idPuestoParameter = idPuesto.HasValue ?
+                new ObjectParameter("IdPuesto", idPuesto) :
+                new ObjectParameter("IdPuesto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Empleado_Update", idEmpleadoParameter, nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
+        }
     }
 }
