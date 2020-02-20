@@ -1,6 +1,5 @@
 create database LosInges
 go 
-
 use LosInges
 create table TipoCliente(
 IdTipoCliente int identity primary key not null,
@@ -31,9 +30,11 @@ IdAuto int identity primary key not null,
 Placa varchar(7),
 IdStatus_Auto int foreign key (IdStatus_Auto) references Status_Auto (IdStatus_Auto),
 Marca varchar(10),
-Modelo int,
+Modelo varchar(10),
+Anio int,
 IdCliente int foreign key (IdCliente) references Cliente(IdCliente)
 )
+
 go
 create table Departamento(
 IdDepartamento int identity primary key not null,
@@ -142,3 +143,16 @@ begin
 end
 */
 
+/*
+create procedure SP_Auto_Alta
+@Placa varchar(7),
+@Marca varchar(10),
+@Modelo varchar(10),
+@Anio int,
+@IdCliente int
+as
+begin
+insert into Auto (Placa,IdStatus_Auto,Marca,Modelo,Anio,IdCliente)
+	values(@Placa,1,@Marca,@Modelo,@Anio,@IdCliente )
+end
+*/

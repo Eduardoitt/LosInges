@@ -77,17 +77,6 @@ namespace LosInges.Controllers
             Cliente cliente = db.Cliente.Where(x => x.IdCliente == IdCliente).FirstOrDefault<Cliente>();
             
             ViewBag.TipoCliente = cliente.IdTipoCliente;
-            //Cliente Cl =(from C in db.Cliente where C.IdCliente == IdCliente select new Cliente
-            //{
-            //    IdCliente=C.IdCliente,
-            //    Nombre=C.Nombre,
-            //    ApPat=C.ApPat,
-            //    ApMat=C.ApMat,
-            //    Telefono=C.Telefono,
-            //    Correo=C.Correo,
-            //    IdTipoCliente=C.IdTipoCliente
-
-            //}).FirstOrDefault();
             return View("Update", cliente);
         }
 

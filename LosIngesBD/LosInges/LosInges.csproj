@@ -137,6 +137,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AutoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\EmpleadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -150,6 +151,7 @@
     <Compile Include="Models\Cliente.cs">
       <DependentUpon>LosInges.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Modelos\ClienteLista.cs" />
     <Compile Include="Models\Departamento.cs">
       <DependentUpon>LosInges.tt</DependentUpon>
     </Compile>
@@ -465,10 +467,9 @@
     <Content Include="Views\Cliente\Cliente.cshtml" />
     <Content Include="Views\Cliente\Update.cshtml" />
     <Content Include="Views\Productos\Productos.cshtml" />
-
     <Content Include="Views\Cliente\Index.cshtml" />
-
     <Content Include="Views\Empleados\Empleado.cshtml" />
+    <Content Include="Views\Auto\AutoCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

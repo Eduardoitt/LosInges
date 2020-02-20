@@ -9,6 +9,7 @@
           <ScalarProperty Name="IdStatus_Auto" ColumnName="IdStatus_Auto" />
           <ScalarProperty Name="Marca" ColumnName="Marca" />
           <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -143,6 +144,7 @@
         <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
       </EndProperty>
     </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="SP_Auto_Alta" FunctionName="LosIngesModel.Store.SP_Auto_Alta" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
   </EntityContainerMapping>

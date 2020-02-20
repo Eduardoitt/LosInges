@@ -4,36 +4,36 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2c2891d294414d3e9e2dca0199ccc8b2" Name="Diagram1">
+      <Diagram DiagramId="41d75bedb7b24000acaa4e7287095e6b" Name="Diagram1">
         <EntityTypeShape EntityType="LosIngesModel.Auto" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Cliente" Width="1.5" PointX="1.5" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Departamento" Width="1.5" PointX="1.5" PointY="30.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Diagnostico" Width="1.5" PointX="4" PointY="19" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Empleado" Width="1.5" PointX="0.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Cliente" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Departamento" Width="1.5" PointX="1.5" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Diagnostico" Width="1.5" PointX="4" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Empleado" Width="1.5" PointX="0.75" PointY="26.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LosIngesModel.Factura" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LosIngesModel.Producto" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Promocion" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Puesto" Width="1.5" PointX="1.5" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Promocion" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Puesto" Width="1.5" PointX="1.5" PointY="33.375" IsExpanded="true" />
         <EntityTypeShape EntityType="LosIngesModel.Restauracion" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Status_Auto" Width="1.5" PointX="1.5" PointY="23.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.TipoCliente" Width="1.5" PointX="1.5" PointY="20.25" IsExpanded="true" />
-        <AssociationConnector Association="LosIngesModel.FK__Auto__IdCliente__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Auto__IdStatus_A__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Diagnosti__IdAut__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Factura__IdAuto__571DF1D5" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdAut__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Cliente__IdTipoC__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Factura__IdClien__5812160E" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Empleado__IdDepa__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdDep__534D60F1" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Diagnosti__IdEmp__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Empleado__IdPues__46E78A0C" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Factura__IdEmple__5BE2A6F2" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdEmp__52593CB8" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Factura__IdProdu__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Factura__IdPromo__5AEE82B9" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Factura__IdResta__59063A47" ManuallyRouted="false" />
-        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdPro__5441852A" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LosIngesModel.Status_Auto" Width="1.5" PointX="1.5" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.TipoCliente" Width="1.5" PointX="1.5" PointY="20.5" IsExpanded="true" />
+        <AssociationConnector Association="LosIngesModel.FK__Auto__IdCliente__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Auto__IdStatus_A__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Diagnosti__IdAut__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Factura__IdAuto__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdAut__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Cliente__IdTipoC__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Factura__IdClien__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Empleado__IdDepa__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdDep__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Diagnosti__IdEmp__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Empleado__IdPues__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Factura__IdEmple__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdEmp__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Factura__IdProdu__6D0D32F4" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Factura__IdPromo__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Factura__IdResta__6C190EBB" ManuallyRouted="false" />
+        <AssociationConnector Association="LosIngesModel.FK__Restaurac__IdPro__6754599E" ManuallyRouted="false" />
         <AssociationConnector Association="LosIngesModel.Auto_Reparacion" ManuallyRouted="false" />
         <AssociationConnector Association="LosIngesModel.Producto_Reparacion" ManuallyRouted="false" />
       </Diagram>

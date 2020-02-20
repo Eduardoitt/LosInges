@@ -40,6 +40,31 @@ namespace LosInges.Models
         public virtual DbSet<Status_Auto> Status_Auto { get; set; }
         public virtual DbSet<TipoCliente> TipoCliente { get; set; }
     
+        public virtual int SP_Auto_Alta(string placa, string marca, string modelo, Nullable<int> anio, Nullable<int> idCliente)
+        {
+            var placaParameter = placa != null ?
+                new ObjectParameter("Placa", placa) :
+                new ObjectParameter("Placa", typeof(string));
+    
+            var marcaParameter = marca != null ?
+                new ObjectParameter("Marca", marca) :
+                new ObjectParameter("Marca", typeof(string));
+    
+            var modeloParameter = modelo != null ?
+                new ObjectParameter("Modelo", modelo) :
+                new ObjectParameter("Modelo", typeof(string));
+    
+            var anioParameter = anio.HasValue ?
+                new ObjectParameter("Anio", anio) :
+                new ObjectParameter("Anio", typeof(int));
+    
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("IdCliente", idCliente) :
+                new ObjectParameter("IdCliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Auto_Alta", placaParameter, marcaParameter, modeloParameter, anioParameter, idClienteParameter);
+        }
+    
         public virtual int SP_Cliente_Alta(string nombre, string apPat, string apMat, string telefono, string correo)
         {
             var nombreParameter = nombre != null ?

@@ -27,7 +27,8 @@ namespace LosInges.Models
         public string Placa { get; set; }
         public Nullable<int> IdStatus_Auto { get; set; }
         public string Marca { get; set; }
-        public Nullable<int> Modelo { get; set; }
+        public string Modelo { get; set; }
+        public Nullable<int> Anio { get; set; }
         public Nullable<int> IdCliente { get; set; }
     
         public virtual Cliente Cliente { get; set; }
