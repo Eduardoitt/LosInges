@@ -151,7 +151,6 @@
     <Compile Include="Models\Cliente.cs">
       <DependentUpon>LosInges.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Modelos\ClienteLista.cs" />
     <Compile Include="Models\Departamento.cs">
       <DependentUpon>LosInges.tt</DependentUpon>
     </Compile>
@@ -179,6 +178,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LosInges.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Modelos\ClienteLista.cs" />
     <Compile Include="Models\Producto.cs">
       <DependentUpon>LosInges.tt</DependentUpon>
     </Compile>
@@ -470,6 +470,7 @@
     <Content Include="Views\Cliente\Index.cshtml" />
     <Content Include="Views\Empleados\Empleado.cshtml" />
     <Content Include="Views\Auto\AutoCreate.cshtml" />
+    <Content Include="Views\Empleados\AltaEmpleado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
