@@ -27,19 +27,19 @@ namespace LosInges.Controllers
         // GET: Empleados/Create
         public ActionResult Create()
         {
-            ViewBag.ListEmp = ListaEmpleado_Result.ToList();
-            //ViewBag.ListEmp = (from LE in db.Empleado
-            //                   join d in db.Departamento on LE.IdDepartamento equals d.IdDepartamento
-            //                   join P in db.Puesto on LE.IdPuesto equals P.IdPuesto
-            //                   select new
-            //                   {
-            //                       IdEmp = LE.IdEmpleado,
-            //                       NomEmp = LE.Nombre,
-            //                       ApPat = LE.ApPat,
-            //                       ApMat = LE.ApMat,
-            //                       DepaEmp = d.Descripcion,
-            //                       PuestoEmp = P.Descripcion
-            //                   }).ToList();
+
+            ViewBag.ListEmp = (from LE in db.Empleado
+                               //join d in db.Departamento on LE.IdDepartamento equals d.IdDepartamento
+                               //join P in db.Puesto on LE.IdPuesto equals P.IdPuesto
+                               select new
+                               {
+                                   IdEmp = LE.IdEmpleado,
+                                   NomEmp = LE.Nombre,
+                                   ApPat = LE.ApPat,
+                                   ApMat = LE.ApMat,
+                                   DepaEmp = LE.IdDepartamento,
+                                   PuestoEmp = LE.IdPuesto
+                               }).ToList();
 
             ViewBag.ListPues = (from LP in db.Puesto
                                 select new

@@ -40,6 +40,49 @@ namespace LosInges.Models
         public virtual DbSet<Status_Auto> Status_Auto { get; set; }
         public virtual DbSet<TipoCliente> TipoCliente { get; set; }
     
+        public virtual int Alta_Empleado(string nombre, string apPat, string apMat, Nullable<int> idDepartamento, Nullable<int> idPuesto)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apPatParameter = apPat != null ?
+                new ObjectParameter("ApPat", apPat) :
+                new ObjectParameter("ApPat", typeof(string));
+    
+            var apMatParameter = apMat != null ?
+                new ObjectParameter("ApMat", apMat) :
+                new ObjectParameter("ApMat", typeof(string));
+    
+            var idDepartamentoParameter = idDepartamento.HasValue ?
+                new ObjectParameter("IdDepartamento", idDepartamento) :
+                new ObjectParameter("IdDepartamento", typeof(int));
+    
+            var idPuestoParameter = idPuesto.HasValue ?
+                new ObjectParameter("IdPuesto", idPuesto) :
+                new ObjectParameter("IdPuesto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Empleado", nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
+        }
+    
+        public virtual int Alta_Producto(string descripcion, string noParte)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var noParteParameter = noParte != null ?
+                new ObjectParameter("NoParte", noParte) :
+                new ObjectParameter("NoParte", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Producto", descripcionParameter, noParteParameter);
+        }
+    
+        public virtual ObjectResult<ListaEmpleado_Result> ListaEmpleado()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListaEmpleado_Result>("ListaEmpleado");
+        }
+    
         public virtual int SP_Cliente_Alta(string nombre, string apPat, string apMat, string telefono, string correo)
         {
             var nombreParameter = nombre != null ?
@@ -63,6 +106,31 @@ namespace LosInges.Models
                 new ObjectParameter("Correo", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Alta", nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
+        }
+    
+        public virtual int SP_Cliente_Altaid(string nombre, string apPat, string apMat, string telefono, string correo)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apPatParameter = apPat != null ?
+                new ObjectParameter("ApPat", apPat) :
+                new ObjectParameter("ApPat", typeof(string));
+    
+            var apMatParameter = apMat != null ?
+                new ObjectParameter("ApMat", apMat) :
+                new ObjectParameter("ApMat", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("Correo", correo) :
+                new ObjectParameter("Correo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Altaid", nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
         }
     
         public virtual int SP_Cliente_Update(Nullable<int> idCliente, string nombre, string apPat, string apMat, string telefono, string correo)
@@ -93,76 +161,5 @@ namespace LosInges.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Update", idClienteParameter, nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
         }
-<<<<<<< HEAD
-    
-        public virtual int SP_Cliente_Alta(string nombre, string apPat, string apMat, string telefono, string correo)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var apPatParameter = apPat != null ?
-                new ObjectParameter("ApPat", apPat) :
-                new ObjectParameter("ApPat", typeof(string));
-    
-            var apMatParameter = apMat != null ?
-                new ObjectParameter("ApMat", apMat) :
-                new ObjectParameter("ApMat", typeof(string));
-    
-            var telefonoParameter = telefono != null ?
-                new ObjectParameter("Telefono", telefono) :
-                new ObjectParameter("Telefono", typeof(string));
-    
-            var correoParameter = correo != null ?
-                new ObjectParameter("Correo", correo) :
-                new ObjectParameter("Correo", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Cliente_Alta", nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
-        }
-    
-        public virtual int Alta_Producto(string descripcion, string noParte)
-        {
-            var descripcionParameter = descripcion != null ?
-                new ObjectParameter("Descripcion", descripcion) :
-                new ObjectParameter("Descripcion", typeof(string));
-    
-            var noParteParameter = noParte != null ?
-                new ObjectParameter("NoParte", noParte) :
-                new ObjectParameter("NoParte", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Producto", descripcionParameter, noParteParameter);
-        }
-    
-        public virtual int Alta_Empleado(string nombre, string apPat, string apMat, Nullable<int> idDepartamento, Nullable<int> idPuesto)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var apPatParameter = apPat != null ?
-                new ObjectParameter("ApPat", apPat) :
-                new ObjectParameter("ApPat", typeof(string));
-    
-            var apMatParameter = apMat != null ?
-                new ObjectParameter("ApMat", apMat) :
-                new ObjectParameter("ApMat", typeof(string));
-    
-            var idDepartamentoParameter = idDepartamento.HasValue ?
-                new ObjectParameter("IdDepartamento", idDepartamento) :
-                new ObjectParameter("IdDepartamento", typeof(int));
-    
-            var idPuestoParameter = idPuesto.HasValue ?
-                new ObjectParameter("IdPuesto", idPuesto) :
-                new ObjectParameter("IdPuesto", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Empleado", nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
-        }
-    
-        public virtual ObjectResult<ListaEmpleado_Result> ListaEmpleado()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ListaEmpleado_Result>("ListaEmpleado");
-        }
-=======
->>>>>>> 27f565c51ae4f7497fa9fcfcfbcc86f1e496e26b
     }
 }

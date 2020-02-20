@@ -143,12 +143,22 @@
         <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
       </EndProperty>
     </AssociationSetMapping>
-    <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
-<<<<<<< HEAD
-    <FunctionImportMapping FunctionImportName="Alta_Producto" FunctionName="LosIngesModel.Store.Alta_Producto" />
     <FunctionImportMapping FunctionImportName="Alta_Empleado" FunctionName="LosIngesModel.Store.Alta_Empleado" />
-=======
+    <FunctionImportMapping FunctionImportName="Alta_Producto" FunctionName="LosIngesModel.Store.Alta_Producto" />
+    <FunctionImportMapping FunctionImportName="ListaEmpleado" FunctionName="LosIngesModel.Store.ListaEmpleado">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LosIngesModel.ListaEmpleado_Result">
+          <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ApPat" ColumnName="ApPat" />
+          <ScalarProperty Name="ApMat" ColumnName="ApMat" />
+          <ScalarProperty Name="DepaEmp" ColumnName="DepaEmp" />
+          <ScalarProperty Name="PuestoEmp" ColumnName="PuestoEmp" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
+    <FunctionImportMapping FunctionImportName="SP_Cliente_Altaid" FunctionName="LosIngesModel.Store.SP_Cliente_Altaid" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
->>>>>>> 27f565c51ae4f7497fa9fcfcfbcc86f1e496e26b
   </EntityContainerMapping>
 </Mapping>
