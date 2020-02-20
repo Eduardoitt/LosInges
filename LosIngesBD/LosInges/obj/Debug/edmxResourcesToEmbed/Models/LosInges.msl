@@ -160,5 +160,6 @@
     <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Altaid" FunctionName="LosIngesModel.Store.SP_Cliente_Altaid" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
+    <FunctionImportMapping FunctionImportName="SP_Empleado_Update" FunctionName="LosIngesModel.Store.SP_Empleado_Update" />
   </EntityContainerMapping>
 </Mapping>

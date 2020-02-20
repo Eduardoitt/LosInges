@@ -487,6 +487,14 @@
       <Parameter Name="Telefono" Mode="In" Type="String" />
       <Parameter Name="Correo" Mode="In" Type="String" />
     </FunctionImport>
+    <FunctionImport Name="SP_Empleado_Update">
+      <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="ApPat" Mode="In" Type="String" />
+      <Parameter Name="ApMat" Mode="In" Type="String" />
+      <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="ListaEmpleado_Result">
     <Property Type="Int32" Name="IdEmpleado" Nullable="false" />

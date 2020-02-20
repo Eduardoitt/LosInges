@@ -23,14 +23,11 @@ namespace LosInges.Controllers
         {
             return View();
         }
-
-        // GET: Empleados/Create
-        public ActionResult Create()
+        public ActionResult Mostrar()
         {
-
             ViewBag.ListEmp = (from LE in db.Empleado
-                               //join d in db.Departamento on LE.IdDepartamento equals d.IdDepartamento
-                               //join P in db.Puesto on LE.IdPuesto equals P.IdPuesto
+                                   join d in db.Departamento on LE.IdDepartamento equals d.IdDepartamento
+                                   join P in db.Puesto on LE.IdPuesto equals P.IdPuesto
                                select new
                                {
                                    IdEmp = LE.IdEmpleado,
@@ -38,8 +35,16 @@ namespace LosInges.Controllers
                                    ApPat = LE.ApPat,
                                    ApMat = LE.ApMat,
                                    DepaEmp = LE.IdDepartamento,
-                                   PuestoEmp = LE.IdPuesto
+                                   PuestoEmp = LE.IdPuesto,
+                                   DepaEmpNom=d.Descripcion,
+                                   PuestoEmpNom = P.Descripcion
                                }).ToList();
+            return View("Empleado");
+        }
+
+        // GET: Empleados/Create
+        public ActionResult Create()
+        {
 
             ViewBag.ListPues = (from LP in db.Puesto
                                 select new
@@ -56,12 +61,12 @@ namespace LosInges.Controllers
                                     DesDepa = LD.Descripcion
 
                                 }).ToList();
-            return View("Empleado");
+            return View("AltaEmpleado");
         }
 
         // POST: Empleados/Create
         [HttpPost]
-        public ActionResult Create(Empleado Emp)
+        public ActionResult Create(Empleado model)
         {
             try
             {
@@ -73,8 +78,8 @@ namespace LosInges.Controllers
                 else
                 {
                     //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
-                    db.Alta_Empleado(Emp.Nombre, Emp.ApMat,Emp.ApPat,Emp.IdDepartamento, Emp.IdPuesto);
-                    return RedirectToAction("Create", "Empleado");
+                    db.Alta_Empleado(model.Nombre, model.ApMat, model.ApPat, model.IdDepartamento, model.IdPuesto);
+                    return RedirectToAction("Mostrar", "Empleados");
                 }
 
             }
@@ -86,24 +91,62 @@ namespace LosInges.Controllers
         }
 
         // GET: Empleados/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Update(int IdEmpleado)
         {
-            return View();
+            ViewBag.ListPues = (from LP in db.Puesto
+                                select new
+                                {
+                                    IdPues = LP.IdPuesto,
+                                    DesPues = LP.Descripcion
+
+                                }).ToList();
+
+            ViewBag.ListDepa = (from LD in db.Departamento
+                                select new
+                                {
+                                    IdDepa = LD.IdDepartamento,
+                                    DesDepa = LD.Descripcion
+
+                                }).ToList();
+            Empleado empleado = db.Empleado.Where(x => x.IdEmpleado == IdEmpleado).FirstOrDefault<Empleado>();
+
+            ViewBag.TipoCliente = empleado.IdPuesto;
+            //Cliente Cl =(from C in db.Cliente where C.IdCliente == IdCliente select new Cliente
+            //{
+            //    IdCliente=C.IdCliente,
+            //    Nombre=C.Nombre,
+            //    ApPat=C.ApPat,
+            //    ApMat=C.ApMat,
+            //    Telefono=C.Telefono,
+            //    Correo=C.Correo,
+            //    IdTipoCliente=C.IdTipoCliente
+
+            //}).FirstOrDefault();
+            return View("EmpUpdate", empleado);
         }
 
-        // POST: Empleados/Edit/5
+        // POST: Cliente/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Update(Empleado Emp)
         {
             try
             {
-                // TODO: Add update logic here
+                // TODO: Add insert logic here
+                if (!ModelState.IsValid)
+                {
+                    return View("EmpUpdate");
+                }
+                else
+                {
+                    //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
+                    db.SP_Empleado_Update(Emp.IdEmpleado, Emp.Nombre, Emp.ApPat, Emp.ApMat, Emp.IdDepartamento, Emp.IdPuesto);
+                    return RedirectToAction("Mostrar", "Empleados");
+                }
 
-                return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("EmpUpdate");
             }
         }
 

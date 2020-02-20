@@ -193,3 +193,16 @@ IdEmp = LE.IdEmpleado,
                                    ApMat = LE.ApMat,
                                    DepaEmp = d.Descripcion,
                                    PuestoEmp = P.Descripcion
+
+
+create procedure SP_Empleado_Update
+@IdEmpleado int,
+@Nombre varchar(30),
+@ApPat varchar(20),
+@ApMat varchar(20),
+@IdDepartamento int,
+@IdPuesto int 
+as
+begin
+		update Empleado set Nombre=@Nombre,ApPat=@ApPat,ApMat=@ApMat,IdDepartamento=@IdDepartamento,IdPuesto=@IdPuesto where IdEmpleado=@IdEmpleado
+end
