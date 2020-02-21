@@ -129,6 +129,7 @@
     <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="PrecioRestauracion" Type="Decimal" Precision="10" Scale="3" />
     <Property Name="IdProducto" Type="Int32" />
+    <Property Name="FechaReatauracion" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Auto" Relationship="Self.FK__Restaurac__IdAut__6477ECF3" FromRole="Restauracion" ToRole="Auto" />
     <NavigationProperty Name="Departamento" Relationship="Self.FK__Restaurac__IdDep__66603565" FromRole="Restauracion" ToRole="Departamento" />
     <NavigationProperty Name="Empleado" Relationship="Self.FK__Restaurac__IdEmp__656C112C" FromRole="Restauracion" ToRole="Empleado" />
@@ -136,7 +137,6 @@
     <NavigationProperty Name="Producto" Relationship="Self.FK__Restaurac__IdPro__6754599E" FromRole="Restauracion" ToRole="Producto" />
     <NavigationProperty Name="Auto1" Relationship="Self.Auto_Reparacion" FromRole="Restauracion" ToRole="Auto" />
     <NavigationProperty Name="Producto1" Relationship="Self.Producto_Reparacion" FromRole="Restauracion" ToRole="Producto" />
-    <Property Name="FechaReatauracion" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="Status_Auto">
     <Key>
@@ -477,6 +477,18 @@
       <Parameter Name="Anio" Mode="In" Type="Int32" />
       <Parameter Name="IdCliente" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="SP_Auto_Eliminar">
+      <Parameter Name="IdAuto" Mode="In" Type="Int32" />
+      <Parameter Name="Salida" Mode="InOut" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_AutoRestauracion_Alta">
+      <Parameter Name="IdAuto" Mode="In" Type="Int32" />
+      <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PrecioRestauracion" Mode="In" Type="Decimal" />
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+    </FunctionImport>
     <FunctionImport Name="SP_Cliente_Alta">
       <Parameter Name="Nombre" Mode="In" Type="String" />
       <Parameter Name="ApPat" Mode="In" Type="String" />
@@ -499,14 +511,6 @@
       <Parameter Name="ApMat" Mode="In" Type="String" />
       <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
       <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
-    </FunctionImport>
-    <FunctionImport Name="SP_AutoRestauracion_Alta">
-      <Parameter Name="IdAuto" Mode="In" Type="Int32" />
-      <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
-      <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
-      <Parameter Name="Descripcion" Mode="In" Type="String" />
-      <Parameter Name="PrecioRestauracion" Mode="In" Type="Decimal" />
-      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
 </Schema>

@@ -4,19 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="05fe3181e9e540dd9ee5c7d81a9c6fcb" Name="Diagram1">
-        <EntityTypeShape EntityType="LosIngesModel.Auto" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Cliente" Width="1.5" PointX="1.5" PointY="15.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Departamento" Width="1.5" PointX="1.5" PointY="30.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Diagnostico" Width="1.5" PointX="4" PointY="19.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Empleado" Width="1.5" PointX="0.75" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Factura" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+      <Diagram DiagramId="0160a598030646e285693f0b09f152b1" Name="Diagram1">
+        <EntityTypeShape EntityType="LosIngesModel.Auto" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Cliente" Width="1.5" PointX="1.5" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Departamento" Width="1.5" PointX="1.5" PointY="31" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Diagnostico" Width="1.5" PointX="4" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Empleado" Width="1.5" PointX="0.75" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Factura" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
         <EntityTypeShape EntityType="LosIngesModel.Producto" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Promocion" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Puesto" Width="1.5" PointX="1.5" PointY="33.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Promocion" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Puesto" Width="1.5" PointX="1.5" PointY="33.5" IsExpanded="true" />
         <EntityTypeShape EntityType="LosIngesModel.Restauracion" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.Status_Auto" Width="1.5" PointX="1.5" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LosIngesModel.TipoCliente" Width="1.5" PointX="1.5" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.Status_Auto" Width="1.5" PointX="1.5" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LosIngesModel.TipoCliente" Width="1.5" PointX="1.5" PointY="20.625" IsExpanded="true" />
         <AssociationConnector Association="LosIngesModel.FK__Auto__IdCliente__52593CB8" ManuallyRouted="false" />
         <AssociationConnector Association="LosIngesModel.FK__Auto__IdStatus_A__5165187F" ManuallyRouted="false" />
         <AssociationConnector Association="LosIngesModel.FK__Diagnosti__IdAut__5CD6CB2B" ManuallyRouted="false" />

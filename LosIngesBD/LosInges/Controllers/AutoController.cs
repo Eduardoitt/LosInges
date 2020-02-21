@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using LosInges.Models;
 using Syncfusion.EJ2.Navigations;
 using Newtonsoft.Json;
+using LosInges.Models.Modelos;
+using System.Data.Entity.Core.Objects;
 
 namespace LosInges.Controllers
 {
@@ -124,6 +126,29 @@ namespace LosInges.Controllers
             }
         }
 
+        public ActionResult ListaAutoServicio(int IdAuto)
+        {
+            List<ListaAS> json = (from r in db.Restauracion
+                                            join d in db.Departamento on r.IdDepartamento equals d.IdDepartamento
+                                            where r.IdAuto == IdAuto
+                                            select new ListaAS
+                                            {
+                                                IdAuto =  r.IdAuto,
+                                                IdRestauracion = r.IdRestauracion,
+                                                IdDepartamento = d.IdDepartamento,
+                                                Departamento = d.Descripcion,
+                                                Descripcion = r.Descripcion
+                                            }).ToList();
+            string JSONString = JsonConvert.SerializeObject(json);
+            return Json(JSONString, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult EliminarAuto(int IdAuto)
+        {            
+            ObjectParameter OutPut = new ObjectParameter("Salida", typeof(int));
+            db.SP_Auto_Eliminar(IdAuto, OutPut);
+            int regreso = Convert.ToInt32(OutPut.Value);
+            return Json(new { mensaje = regreso }, JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

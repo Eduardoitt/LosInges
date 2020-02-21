@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LosIngesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LosIngesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Auto">
           <Key>
             <PropertyRef Name="IdAuto" />
@@ -411,6 +411,10 @@
           <Parameter Name="Anio" Type="int" Mode="In" />
           <Parameter Name="IdCliente" Type="int" Mode="In" />
         </Function>
+        <Function Name="SP_Auto_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAuto" Type="int" Mode="In" />
+          <Parameter Name="Salida" Type="int" Mode="InOut" />
+        </Function>
         <Function Name="SP_AutoRestauracion_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="IdAuto" Type="int" Mode="In" />
           <Parameter Name="IdEmpleado" Type="int" Mode="In" />
@@ -542,7 +546,8 @@
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LosIngesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -675,6 +680,7 @@
           <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PrecioRestauracion" Type="Decimal" Precision="10" Scale="3" />
           <Property Name="IdProducto" Type="Int32" />
+          <Property Name="FechaReatauracion" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Auto" Relationship="Self.FK__Restaurac__IdAut__6477ECF3" FromRole="Restauracion" ToRole="Auto" />
           <NavigationProperty Name="Departamento" Relationship="Self.FK__Restaurac__IdDep__66603565" FromRole="Restauracion" ToRole="Departamento" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK__Restaurac__IdEmp__656C112C" FromRole="Restauracion" ToRole="Empleado" />
@@ -682,7 +688,6 @@
           <NavigationProperty Name="Producto" Relationship="Self.FK__Restaurac__IdPro__6754599E" FromRole="Restauracion" ToRole="Producto" />
           <NavigationProperty Name="Auto1" Relationship="Self.Auto_Reparacion" FromRole="Restauracion" ToRole="Auto" />
           <NavigationProperty Name="Producto1" Relationship="Self.Producto_Reparacion" FromRole="Restauracion" ToRole="Producto" />
-          <Property Name="FechaReatauracion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Status_Auto">
           <Key>
@@ -1023,6 +1028,18 @@
             <Parameter Name="Anio" Mode="In" Type="Int32" />
             <Parameter Name="IdCliente" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="SP_Auto_Eliminar">
+            <Parameter Name="IdAuto" Mode="In" Type="Int32" />
+            <Parameter Name="Salida" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AutoRestauracion_Alta">
+            <Parameter Name="IdAuto" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="PrecioRestauracion" Mode="In" Type="Decimal" />
+            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
+          </FunctionImport>
           <FunctionImport Name="SP_Cliente_Alta">
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="ApPat" Mode="In" Type="String" />
@@ -1045,14 +1062,6 @@
             <Parameter Name="ApMat" Mode="In" Type="String" />
             <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
             <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="SP_AutoRestauracion_Alta">
-            <Parameter Name="IdAuto" Mode="In" Type="Int32" />
-            <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
-            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
-            <Parameter Name="Descripcion" Mode="In" Type="String" />
-            <Parameter Name="PrecioRestauracion" Mode="In" Type="Decimal" />
-            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1162,7 +1171,6 @@
           <EntitySetMapping Name="Restauracion">
             <EntityTypeMapping TypeName="LosIngesModel.Restauracion">
               <MappingFragment StoreEntitySet="Restauracion">
-                <ScalarProperty Name="FechaReatauracion" ColumnName="FechaReatauracion" />
                 <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
                 <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
@@ -1170,6 +1178,7 @@
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="PrecioRestauracion" ColumnName="PrecioRestauracion" />
                 <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="FechaReatauracion" ColumnName="FechaReatauracion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1208,10 +1217,11 @@
           <FunctionImportMapping FunctionImportName="Alta_Empleado" FunctionName="LosIngesModel.Store.Alta_Empleado" />
           <FunctionImportMapping FunctionImportName="Alta_Prod" FunctionName="LosIngesModel.Store.Alta_Prod" />
           <FunctionImportMapping FunctionImportName="SP_Auto_Alta" FunctionName="LosIngesModel.Store.SP_Auto_Alta" />
+          <FunctionImportMapping FunctionImportName="SP_Auto_Eliminar" FunctionName="LosIngesModel.Store.SP_Auto_Eliminar" />
+          <FunctionImportMapping FunctionImportName="SP_AutoRestauracion_Alta" FunctionName="LosIngesModel.Store.SP_AutoRestauracion_Alta" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
           <FunctionImportMapping FunctionImportName="SP_Empleado_Update" FunctionName="LosIngesModel.Store.SP_Empleado_Update" />
-          <FunctionImportMapping FunctionImportName="SP_AutoRestauracion_Alta" FunctionName="LosIngesModel.Store.SP_AutoRestauracion_Alta" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -2,7 +2,7 @@
     Layout = null;
 }
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
         <div class="card ">
             <div class="card-header card-header-info card-header-text">
                 <div class="card-icon">
@@ -15,17 +15,16 @@
                 </div>
                 <br />
                 <div class="row">
-
                     <div class="col-md-12">
-                        @Html.EJS().Grid("GridAutos").DataSource((IEnumerable<object>)ViewBag.LA).RowSelected("AutoSelect").AllowFiltering().AllowTextWrap().EnableAutoFill().AllowResizing(true).Columns(col =>
-                   {
-                                  col.Field("IdAuto").Visible(false).Add();
-                                  col.Field("Marca").HeaderText("Marca").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
-                                  col.Field("Modelo").HeaderText("Modelo").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
-                                  col.Field("Placa").HeaderText("Matricula").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
-                                  col.Field("Anio").HeaderText("Año").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
-                                  col.Field("IdCliente").HeaderText("IdCliente").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
-
+                        @Html.EJS().Grid("GridAutos").DataSource((IEnumerable<object>)ViewBag.LA).AllowFiltering().AllowTextWrap().EnableAutoFill().AllowResizing(true).Columns(col =>
+                        {
+                             col.Field("IdAuto").Visible(false).Add();
+                             col.Field("Marca").HeaderText("Marca").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                             col.Field("Modelo").HeaderText("Modelo").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                             col.Field("Placa").HeaderText("Matricula").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                             col.Field("Anio").HeaderText("Año").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                             col.Field("IdCliente").HeaderText("IdCliente").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                            col.HeaderText("Opciones").Template("#EliminarRecibo").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
                         }).AllowPaging().PageSettings(page => { page.PageSize(2); }).Render()
                     </div>
                 </div>
@@ -35,8 +34,36 @@
             </div>
         </div>
     </div>
+    <div class="col-md-6">
+        <div class="card ">
+            <div class="card-header card-header-info card-header-text">
+                <div class="card-icon">
+                    <i class="material-icons">build</i>
+                </div>
+                <h4 class="card-title">Servicio por Auto</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row col-md-12">
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-12" id="gridjason">
+                        @Html.EJS().Grid("GridRestauracionporAuto").RowSelected("RestauracionAuto").AllowFiltering().AllowTextWrap().EnableAutoFill().AllowResizing(true).Columns(col =>
+                              {
+                                  col.Field("IdAuto").Visible(false).Add();
+                                col.Field("IdRestauracion").HeaderText("IdRestauracion").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                                col.Field("IdDepartamento").HeaderText("IdDepartamento").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                                col.Field("Departamento").HeaderText("Departamento").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                                col.Field("Descripcion").HeaderText("Descripcion").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                              }).Render()
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+@******************************************************************************************************************************@
 <div class="modal fade" id="ModalAddServicio" tabindex="-1" role="dialog" aria-labelledby="ModalAddServicio" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -51,40 +78,63 @@
         </div>
     </div>
 </div>
+@******************************************************************************************************************************@
 
-
+<script id="EliminarRecibo" type="text/x-template">
+    <div class="btn-group">
+        <a class="text-info" href="javascript:void(0)" onclick="AutoSelect()" data-toggle="tooltip" data-placement="top" title="Editar">
+            <i class="material-icons">edit</i>
+        </a>
+        <a class="text-danger" href="javascript:void(0)" onclick="Eliminar(${IdAuto})" data-toggle="tooltip" data-placement="top" title="Eliminar">
+            <i class="material-icons">delete_forever</i>
+        </a>
+    </div>
+  
+</script>
 
 <script>
     $("#btnagregarservicio").click(function () {
-        
-        var url = '@Url.Action("AddServicio", "Auto", new { IdCliente = "_id_" })'.replace('_id_', @ViewBag.IdCliente);     
+
+        var url = '@Url.Action("AddServicio", "Auto", new { IdCliente = "_id_" })'.replace('_id_', @ViewBag.IdCliente);
         $("#frmaddser").load(url);
         $("#ModalAddServicio").modal("show");
-        @*$.ajax({
-            url: '@Url.Action("AddServicio", "Auto")',
-            type: "POST",
-            data: {IdAuto:},
-            contentType: false,
-            processData: false,
-            async: false,
-            success: function (data) {
-                if (typeof (data.Value) != "undefined") {
-                    alert(data.Message);
-                } else {
-                    alert("Error");
-                }
-            },
-            error: function (data) {
-
-            }
-        });*@
     });
-      function AutoSelect(args) {
-        var grid = document.getElementById("GridAutos").ej2_instances[0];
-         // var IdC = grid.getSelectedRecords()[0].IdCliente;
-         // var IdAut = grid.getSelectedRecords()[0].IdAuto;
-       // var url = '@Url.Action("AddServicio", "Auto", new { IdAuto = "_id_" })'.replace('_id_', IdAut);
+    function Eliminar(IdAuto) {
+        //var grid = document.getElementById("GridAutos").ej2_instances[0];
+        //var IdAut = grid.getSelectedRecords()[0].IdAuto;
+        $.get('@Url.Action("EliminarAuto", "Auto",new { IdAuto="_IdAv_"})'.replace('_IdAv_', IdAuto), function (data) {
            
-        //window.location=url;
+            Swal.fire(
+                'Correcto!',
+                'Recibo Eliminado!',
+                'success'
+            ).then((result) => {
+                location.reload();
+            });
+        });
     }
+
+    function AutoSelect(args) {
+        var grid = document.getElementById("GridAutos").ej2_instances[0];
+        var IdAut = grid.getSelectedRecords()[0].IdAuto;
+        SelectFilt(IdAut);
+    }
+    function SelectFilt(IdAut) {
+        $.get('@Url.Action("ListaAutoServicio", "Auto",new { IdAuto="_IdAv_"})'.replace('_IdAv_', IdAut), function (data) {
+            var grid = document.getElementById('GridRestauracionporAuto').ej2_instances[0]; // Grid instance
+            //console.log(data);
+            if (data == '[]') {
+                $("#gridjason").hide();
+            } else {
+                grid.dataSource = JSON.parse(data);
+                $("#gridjason").show();
+            }
+        });
+    }
+
+    function RestauracionAuto() {
+
+    }
+
+
 </script>

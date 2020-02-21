@@ -102,7 +102,6 @@
     <EntitySetMapping Name="Restauracion">
       <EntityTypeMapping TypeName="LosIngesModel.Restauracion">
         <MappingFragment StoreEntitySet="Restauracion">
-          <ScalarProperty Name="FechaReatauracion" ColumnName="FechaReatauracion" />
           <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
           <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
           <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
@@ -110,6 +109,7 @@
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="PrecioRestauracion" ColumnName="PrecioRestauracion" />
           <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="FechaReatauracion" ColumnName="FechaReatauracion" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -148,9 +148,10 @@
     <FunctionImportMapping FunctionImportName="Alta_Empleado" FunctionName="LosIngesModel.Store.Alta_Empleado" />
     <FunctionImportMapping FunctionImportName="Alta_Prod" FunctionName="LosIngesModel.Store.Alta_Prod" />
     <FunctionImportMapping FunctionImportName="SP_Auto_Alta" FunctionName="LosIngesModel.Store.SP_Auto_Alta" />
+    <FunctionImportMapping FunctionImportName="SP_Auto_Eliminar" FunctionName="LosIngesModel.Store.SP_Auto_Eliminar" />
+    <FunctionImportMapping FunctionImportName="SP_AutoRestauracion_Alta" FunctionName="LosIngesModel.Store.SP_AutoRestauracion_Alta" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
     <FunctionImportMapping FunctionImportName="SP_Empleado_Update" FunctionName="LosIngesModel.Store.SP_Empleado_Update" />
-    <FunctionImportMapping FunctionImportName="SP_AutoRestauracion_Alta" FunctionName="LosIngesModel.Store.SP_AutoRestauracion_Alta" />
   </EntityContainerMapping>
 </Mapping>

@@ -119,6 +119,44 @@ namespace LosInges.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Auto_Alta", placaParameter, marcaParameter, modeloParameter, anioParameter, idClienteParameter);
         }
     
+        public virtual int SP_Auto_Eliminar(Nullable<int> idAuto, ObjectParameter salida)
+        {
+            var idAutoParameter = idAuto.HasValue ?
+                new ObjectParameter("IdAuto", idAuto) :
+                new ObjectParameter("IdAuto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Auto_Eliminar", idAutoParameter, salida);
+        }
+    
+        public virtual int SP_AutoRestauracion_Alta(Nullable<int> idAuto, Nullable<int> idEmpleado, Nullable<int> idDepartamento, string descripcion, Nullable<decimal> precioRestauracion, Nullable<int> idProducto)
+        {
+            var idAutoParameter = idAuto.HasValue ?
+                new ObjectParameter("IdAuto", idAuto) :
+                new ObjectParameter("IdAuto", typeof(int));
+    
+            var idEmpleadoParameter = idEmpleado.HasValue ?
+                new ObjectParameter("IdEmpleado", idEmpleado) :
+                new ObjectParameter("IdEmpleado", typeof(int));
+    
+            var idDepartamentoParameter = idDepartamento.HasValue ?
+                new ObjectParameter("IdDepartamento", idDepartamento) :
+                new ObjectParameter("IdDepartamento", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var precioRestauracionParameter = precioRestauracion.HasValue ?
+                new ObjectParameter("PrecioRestauracion", precioRestauracion) :
+                new ObjectParameter("PrecioRestauracion", typeof(decimal));
+    
+            var idProductoParameter = idProducto.HasValue ?
+                new ObjectParameter("IdProducto", idProducto) :
+                new ObjectParameter("IdProducto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_AutoRestauracion_Alta", idAutoParameter, idEmpleadoParameter, idDepartamentoParameter, descripcionParameter, precioRestauracionParameter, idProductoParameter);
+        }
+    
         public virtual int SP_Cliente_Alta(string nombre, string apPat, string apMat, string telefono, string correo)
         {
             var nombreParameter = nombre != null ?
@@ -200,35 +238,6 @@ namespace LosInges.Models
                 new ObjectParameter("IdPuesto", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Empleado_Update", idEmpleadoParameter, nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
-        }
-    
-        public virtual int SP_AutoRestauracion_Alta(Nullable<int> idAuto, Nullable<int> idEmpleado, Nullable<int> idDepartamento, string descripcion, Nullable<decimal> precioRestauracion, Nullable<int> idProducto)
-        {
-            var idAutoParameter = idAuto.HasValue ?
-                new ObjectParameter("IdAuto", idAuto) :
-                new ObjectParameter("IdAuto", typeof(int));
-    
-            var idEmpleadoParameter = idEmpleado.HasValue ?
-                new ObjectParameter("IdEmpleado", idEmpleado) :
-                new ObjectParameter("IdEmpleado", typeof(int));
-    
-            var idDepartamentoParameter = idDepartamento.HasValue ?
-                new ObjectParameter("IdDepartamento", idDepartamento) :
-                new ObjectParameter("IdDepartamento", typeof(int));
-    
-            var descripcionParameter = descripcion != null ?
-                new ObjectParameter("Descripcion", descripcion) :
-                new ObjectParameter("Descripcion", typeof(string));
-    
-            var precioRestauracionParameter = precioRestauracion.HasValue ?
-                new ObjectParameter("PrecioRestauracion", precioRestauracion) :
-                new ObjectParameter("PrecioRestauracion", typeof(decimal));
-    
-            var idProductoParameter = idProducto.HasValue ?
-                new ObjectParameter("IdProducto", idProducto) :
-                new ObjectParameter("IdProducto", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_AutoRestauracion_Alta", idAutoParameter, idEmpleadoParameter, idDepartamentoParameter, descripcionParameter, precioRestauracionParameter, idProductoParameter);
         }
     }
 }

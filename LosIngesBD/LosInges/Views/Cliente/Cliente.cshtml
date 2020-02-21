@@ -18,11 +18,8 @@
         @using (Html.BeginForm("Create", "Cliente", new AjaxOptions { UpdateTargetId = "frmContadd" }))
         {
             @Html.AntiForgeryToken()
-
             <div class="card-body">
-
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
                         <div class="form-group label-floating is-empty">
@@ -71,7 +68,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-12">
+                    @*<div class="col-md-6 col-sm-12">
                         <div class="form-group label-floating is-empty">
                             <label class="control-label">Tipo de Cliente</label>
                             <span class="material-input">
@@ -79,7 +76,7 @@
                                 @Html.ValidationMessageFor(model => model.ApMat, "", new { @class = "text-danger" })
                             </span>
                         </div>
-                    </div>
+                    </div>*@
                 </div>
 
                 <div class="form-group">

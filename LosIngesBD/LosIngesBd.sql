@@ -254,6 +254,26 @@ select *from Producto
 select  *from Restauracion
 
 
-select * from  Auto_Reparacion 
+select Departamento.Descripcion,Restauracion.Descripcion from  Auto_Reparacion inner join Restauracion on Auto_Reparacion.IdRestauracion = Restauracion.IdRestauracion
+inner join Departamento on Restauracion.IdDepartamento=Departamento.IdDepartamento
+where Restauracion.IdAuto=1
 
-alter table Restauracion add FechaReatauracion date
+select *from Auto_Reparacion where IdAuto=1
+
+select Departamento.Descripcion,Restauracion.Descripcion  from Restauracion inner join Departamento on Restauracion.IdDepartamento= Departamento.IdDepartamento where IdAuto=5
+
+select *from Auto
+
+select *from Au
+
+alter procedure SP_Auto_Eliminar
+@IdAuto int,
+@Salida int output
+as
+begin
+	delete from Auto where IdAuto=@IdAuto
+	set @Salida=1
+end
+
+select *from Auto
+delete from Auto where IdAuto=8 
