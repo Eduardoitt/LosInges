@@ -116,6 +116,7 @@
     <Property Name="Descripcion" Type="varchar" MaxLength="50" />
     <Property Name="PrecioRestauracion" Type="decimal" Precision="10" Scale="3" />
     <Property Name="IdProducto" Type="int" />
+    <Property Name="FechaReatauracion" Type="date" />
   </EntityType>
   <EntityType Name="Status_Auto">
     <Key>
@@ -383,12 +384,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="Alta_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="ApPat" Type="varchar" Mode="In" />
+    <Parameter Name="ApMat" Type="varchar" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="IdPuesto" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Alta_Prod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdCliente" Type="int" Mode="In" />
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="ApPat" Type="varchar" Mode="In" />
+    <Parameter Name="ApMat" Type="varchar" Mode="In" />
+    <Parameter Name="Telefono" Type="varchar" Mode="In" />
+    <Parameter Name="Correo" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="SP_Auto_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Placa" Type="varchar" Mode="In" />
     <Parameter Name="Marca" Type="varchar" Mode="In" />
     <Parameter Name="Modelo" Type="varchar" Mode="In" />
     <Parameter Name="Anio" Type="int" Mode="In" />
     <Parameter Name="IdCliente" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_AutoRestauracion_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAuto" Type="int" Mode="In" />
+    <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+    <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="PrecioRestauracion" Type="decimal" Mode="In" />
+    <Parameter Name="IdProducto" Type="int" Mode="In" />
   </Function>
   <Function Name="SP_Cliente_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />

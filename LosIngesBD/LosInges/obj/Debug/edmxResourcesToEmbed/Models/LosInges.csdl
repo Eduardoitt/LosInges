@@ -136,6 +136,7 @@
     <NavigationProperty Name="Producto" Relationship="Self.FK__Restaurac__IdPro__6754599E" FromRole="Restauracion" ToRole="Producto" />
     <NavigationProperty Name="Auto1" Relationship="Self.Auto_Reparacion" FromRole="Restauracion" ToRole="Auto" />
     <NavigationProperty Name="Producto1" Relationship="Self.Producto_Reparacion" FromRole="Restauracion" ToRole="Producto" />
+    <Property Name="FechaReatauracion" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="Status_Auto">
     <Key>
@@ -454,6 +455,21 @@
       <End Role="Producto" EntitySet="Producto" />
       <End Role="Restauracion" EntitySet="Restauracion" />
     </AssociationSet>
+    <FunctionImport Name="Alta_Empleado">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="ApPat" Mode="In" Type="String" />
+      <Parameter Name="ApMat" Mode="In" Type="String" />
+      <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Alta_Prod">
+      <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="ApPat" Mode="In" Type="String" />
+      <Parameter Name="ApMat" Mode="In" Type="String" />
+      <Parameter Name="Telefono" Mode="In" Type="String" />
+      <Parameter Name="Correo" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="SP_Auto_Alta">
       <Parameter Name="Placa" Mode="In" Type="String" />
       <Parameter Name="Marca" Mode="In" Type="String" />
@@ -483,6 +499,14 @@
       <Parameter Name="ApMat" Mode="In" Type="String" />
       <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
       <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SP_AutoRestauracion_Alta">
+      <Parameter Name="IdAuto" Mode="In" Type="Int32" />
+      <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+      <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="PrecioRestauracion" Mode="In" Type="Decimal" />
+      <Parameter Name="IdProducto" Mode="In" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
 </Schema>

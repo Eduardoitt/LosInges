@@ -99,6 +99,9 @@
         <div class="col-md-6">
             @Html.Action("Create", "Auto", new { IdCliente = Model.IdCliente })
         </div>
+        <div class="col-md-12">
+            @Html.Action("ListaCarro","Auto", new { IdCliente= Model.IdCliente})
+        </div>
        
     </div>
 

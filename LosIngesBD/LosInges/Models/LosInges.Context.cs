@@ -40,6 +40,60 @@ namespace LosInges.Models
         public virtual DbSet<Status_Auto> Status_Auto { get; set; }
         public virtual DbSet<TipoCliente> TipoCliente { get; set; }
     
+        public virtual int Alta_Empleado(string nombre, string apPat, string apMat, Nullable<int> idDepartamento, Nullable<int> idPuesto)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apPatParameter = apPat != null ?
+                new ObjectParameter("ApPat", apPat) :
+                new ObjectParameter("ApPat", typeof(string));
+    
+            var apMatParameter = apMat != null ?
+                new ObjectParameter("ApMat", apMat) :
+                new ObjectParameter("ApMat", typeof(string));
+    
+            var idDepartamentoParameter = idDepartamento.HasValue ?
+                new ObjectParameter("IdDepartamento", idDepartamento) :
+                new ObjectParameter("IdDepartamento", typeof(int));
+    
+            var idPuestoParameter = idPuesto.HasValue ?
+                new ObjectParameter("IdPuesto", idPuesto) :
+                new ObjectParameter("IdPuesto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Empleado", nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
+        }
+    
+        public virtual int Alta_Prod(Nullable<int> idCliente, string nombre, string apPat, string apMat, string telefono, string correo)
+        {
+            var idClienteParameter = idCliente.HasValue ?
+                new ObjectParameter("IdCliente", idCliente) :
+                new ObjectParameter("IdCliente", typeof(int));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var apPatParameter = apPat != null ?
+                new ObjectParameter("ApPat", apPat) :
+                new ObjectParameter("ApPat", typeof(string));
+    
+            var apMatParameter = apMat != null ?
+                new ObjectParameter("ApMat", apMat) :
+                new ObjectParameter("ApMat", typeof(string));
+    
+            var telefonoParameter = telefono != null ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(string));
+    
+            var correoParameter = correo != null ?
+                new ObjectParameter("Correo", correo) :
+                new ObjectParameter("Correo", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Prod", idClienteParameter, nombreParameter, apPatParameter, apMatParameter, telefonoParameter, correoParameter);
+        }
+    
         public virtual int SP_Auto_Alta(string placa, string marca, string modelo, Nullable<int> anio, Nullable<int> idCliente)
         {
             var placaParameter = placa != null ?
@@ -146,6 +200,35 @@ namespace LosInges.Models
                 new ObjectParameter("IdPuesto", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Empleado_Update", idEmpleadoParameter, nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
+        }
+    
+        public virtual int SP_AutoRestauracion_Alta(Nullable<int> idAuto, Nullable<int> idEmpleado, Nullable<int> idDepartamento, string descripcion, Nullable<decimal> precioRestauracion, Nullable<int> idProducto)
+        {
+            var idAutoParameter = idAuto.HasValue ?
+                new ObjectParameter("IdAuto", idAuto) :
+                new ObjectParameter("IdAuto", typeof(int));
+    
+            var idEmpleadoParameter = idEmpleado.HasValue ?
+                new ObjectParameter("IdEmpleado", idEmpleado) :
+                new ObjectParameter("IdEmpleado", typeof(int));
+    
+            var idDepartamentoParameter = idDepartamento.HasValue ?
+                new ObjectParameter("IdDepartamento", idDepartamento) :
+                new ObjectParameter("IdDepartamento", typeof(int));
+    
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var precioRestauracionParameter = precioRestauracion.HasValue ?
+                new ObjectParameter("PrecioRestauracion", precioRestauracion) :
+                new ObjectParameter("PrecioRestauracion", typeof(decimal));
+    
+            var idProductoParameter = idProducto.HasValue ?
+                new ObjectParameter("IdProducto", idProducto) :
+                new ObjectParameter("IdProducto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_AutoRestauracion_Alta", idAutoParameter, idEmpleadoParameter, idDepartamentoParameter, descripcionParameter, precioRestauracionParameter, idProductoParameter);
         }
     }
 }

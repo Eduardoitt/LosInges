@@ -121,6 +121,7 @@
           <Property Name="Descripcion" Type="varchar" MaxLength="50" />
           <Property Name="PrecioRestauracion" Type="decimal" Precision="10" Scale="3" />
           <Property Name="IdProducto" Type="int" />
+          <Property Name="FechaReatauracion" Type="date" />
         </EntityType>
         <EntityType Name="Status_Auto">
           <Key>
@@ -388,12 +389,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="Alta_Empleado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApPat" Type="varchar" Mode="In" />
+          <Parameter Name="ApMat" Type="varchar" Mode="In" />
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="IdPuesto" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Alta_Prod" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdCliente" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="ApPat" Type="varchar" Mode="In" />
+          <Parameter Name="ApMat" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="varchar" Mode="In" />
+          <Parameter Name="Correo" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="SP_Auto_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Placa" Type="varchar" Mode="In" />
           <Parameter Name="Marca" Type="varchar" Mode="In" />
           <Parameter Name="Modelo" Type="varchar" Mode="In" />
           <Parameter Name="Anio" Type="int" Mode="In" />
           <Parameter Name="IdCliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_AutoRestauracion_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdAuto" Type="int" Mode="In" />
+          <Parameter Name="IdEmpleado" Type="int" Mode="In" />
+          <Parameter Name="IdDepartamento" Type="int" Mode="In" />
+          <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+          <Parameter Name="PrecioRestauracion" Type="decimal" Mode="In" />
+          <Parameter Name="IdProducto" Type="int" Mode="In" />
         </Function>
         <Function Name="SP_Cliente_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
@@ -658,6 +682,7 @@
           <NavigationProperty Name="Producto" Relationship="Self.FK__Restaurac__IdPro__6754599E" FromRole="Restauracion" ToRole="Producto" />
           <NavigationProperty Name="Auto1" Relationship="Self.Auto_Reparacion" FromRole="Restauracion" ToRole="Auto" />
           <NavigationProperty Name="Producto1" Relationship="Self.Producto_Reparacion" FromRole="Restauracion" ToRole="Producto" />
+          <Property Name="FechaReatauracion" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Status_Auto">
           <Key>
@@ -976,6 +1001,21 @@
             <End Role="Producto" EntitySet="Producto" />
             <End Role="Restauracion" EntitySet="Restauracion" />
           </AssociationSet>
+          <FunctionImport Name="Alta_Empleado">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApPat" Mode="In" Type="String" />
+            <Parameter Name="ApMat" Mode="In" Type="String" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Alta_Prod">
+            <Parameter Name="IdCliente" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="ApPat" Mode="In" Type="String" />
+            <Parameter Name="ApMat" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="String" />
+            <Parameter Name="Correo" Mode="In" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="SP_Auto_Alta">
             <Parameter Name="Placa" Mode="In" Type="String" />
             <Parameter Name="Marca" Mode="In" Type="String" />
@@ -1005,6 +1045,14 @@
             <Parameter Name="ApMat" Mode="In" Type="String" />
             <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
             <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_AutoRestauracion_Alta">
+            <Parameter Name="IdAuto" Mode="In" Type="Int32" />
+            <Parameter Name="IdEmpleado" Mode="In" Type="Int32" />
+            <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
+            <Parameter Name="Descripcion" Mode="In" Type="String" />
+            <Parameter Name="PrecioRestauracion" Mode="In" Type="Decimal" />
+            <Parameter Name="IdProducto" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
       </Schema>
@@ -1114,6 +1162,7 @@
           <EntitySetMapping Name="Restauracion">
             <EntityTypeMapping TypeName="LosIngesModel.Restauracion">
               <MappingFragment StoreEntitySet="Restauracion">
+                <ScalarProperty Name="FechaReatauracion" ColumnName="FechaReatauracion" />
                 <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
                 <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
                 <ScalarProperty Name="IdEmpleado" ColumnName="IdEmpleado" />
@@ -1156,10 +1205,13 @@
               <ScalarProperty Name="IdRestauracion" ColumnName="IdRestauracion" />
             </EndProperty>
           </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Alta_Empleado" FunctionName="LosIngesModel.Store.Alta_Empleado" />
+          <FunctionImportMapping FunctionImportName="Alta_Prod" FunctionName="LosIngesModel.Store.Alta_Prod" />
           <FunctionImportMapping FunctionImportName="SP_Auto_Alta" FunctionName="LosIngesModel.Store.SP_Auto_Alta" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
           <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
           <FunctionImportMapping FunctionImportName="SP_Empleado_Update" FunctionName="LosIngesModel.Store.SP_Empleado_Update" />
+          <FunctionImportMapping FunctionImportName="SP_AutoRestauracion_Alta" FunctionName="LosIngesModel.Store.SP_AutoRestauracion_Alta" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

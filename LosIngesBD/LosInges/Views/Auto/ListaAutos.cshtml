@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card ">
+            <div class="card-header card-header-info card-header-text">
+                <div class="card-icon">
+                    <i class="material-icons">directions_car</i>
+                </div>
+                <h4 class="card-title">Autos</h4>
+            </div>
+            <div class="card-body ">
+                <div class="row col-md-12">
+                </div>
+                <br />
+                <div class="row">
+
+                    <div class="col-md-12">
+                        @Html.EJS().Grid("GridAutos").DataSource((IEnumerable<object>)ViewBag.LA).RowSelected("AutoSelect").AllowFiltering().AllowTextWrap().EnableAutoFill().AllowResizing(true).Columns(col =>
+                   {
+                                  col.Field("IdAuto").Visible(false).Add();
+                                  col.Field("Marca").HeaderText("Marca").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                                  col.Field("Modelo").HeaderText("Modelo").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                                  col.Field("Placa").HeaderText("Matricula").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                                  col.Field("Anio").HeaderText("Año").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+                                  col.Field("IdCliente").HeaderText("IdCliente").Visible(false).TextAlign(Syncfusion.EJ2.Grids.TextAlign.Center).Add();
+
+                        }).AllowPaging().PageSettings(page => { page.PageSize(2); }).Render()
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <input type="button" value="Agregar" id="btnagregarservicio" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalAddServicio" tabindex="-1" role="dialog" aria-labelledby="ModalAddServicio" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="frmaddser">
+                @*@Html.Action("AddServicio", "Auto")*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    $("#btnagregarservicio").click(function () {
+        
+        var url = '@Url.Action("AddServicio", "Auto", new { IdCliente = "_id_" })'.replace('_id_', @ViewBag.IdCliente);     
+        $("#frmaddser").load(url);
+        $("#ModalAddServicio").modal("show");
+        @*$.ajax({
+            url: '@Url.Action("AddServicio", "Auto")',
+            type: "POST",
+            data: {IdAuto:},
+            contentType: false,
+            processData: false,
+            async: false,
+            success: function (data) {
+                if (typeof (data.Value) != "undefined") {
+                    alert(data.Message);
+                } else {
+                    alert("Error");
+                }
+            },
+            error: function (data) {
+
+            }
+        });*@
+    });
+      function AutoSelect(args) {
+        var grid = document.getElementById("GridAutos").ej2_instances[0];
+         // var IdC = grid.getSelectedRecords()[0].IdCliente;
+         // var IdAut = grid.getSelectedRecords()[0].IdAuto;
+       // var url = '@Url.Action("AddServicio", "Auto", new { IdAuto = "_id_" })'.replace('_id_', IdAut);
+           
+        //window.location=url;
+    }
+</script>

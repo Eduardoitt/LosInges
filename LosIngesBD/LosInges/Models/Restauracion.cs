@@ -29,6 +29,7 @@ namespace LosInges.Models
         public string Descripcion { get; set; }
         public Nullable<decimal> PrecioRestauracion { get; set; }
         public Nullable<int> IdProducto { get; set; }
+        public Nullable<System.DateTime> FechaReatauracion { get; set; }
     
         public virtual Auto Auto { get; set; }
         public virtual Departamento Departamento { get; set; }

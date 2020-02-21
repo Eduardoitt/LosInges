@@ -109,19 +109,8 @@ namespace LosInges.Controllers
 
                                 }).ToList();
             Empleado empleado = db.Empleado.Where(x => x.IdEmpleado == IdEmpleado).FirstOrDefault<Empleado>();
-
             ViewBag.TipoCliente = empleado.IdPuesto;
-            //Cliente Cl =(from C in db.Cliente where C.IdCliente == IdCliente select new Cliente
-            //{
-            //    IdCliente=C.IdCliente,
-            //    Nombre=C.Nombre,
-            //    ApPat=C.ApPat,
-            //    ApMat=C.ApMat,
-            //    Telefono=C.Telefono,
-            //    Correo=C.Correo,
-            //    IdTipoCliente=C.IdTipoCliente
-
-            //}).FirstOrDefault();
+            
             return View("EmpUpdate", empleado);
         }
 

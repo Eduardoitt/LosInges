@@ -58,6 +58,8 @@ ApMat varchar(20),
 IdDepartamento int foreign key (IdDepartamento) references Departamento (IdDepartamento),
 IdPuesto int foreign key (IdPuesto) references Puesto (Idpuesto)
 )
+--insert into Empleado (Nombre,ApPat,ApMat,IdDepartamento,IdPuesto) values ('Paul','Perez','Garcia',2,1)
+
 go
 create table Diagnostico(
 IdDiagnostico int identity primary key not null,
@@ -113,7 +115,7 @@ IdProducto int foreign key (IdProducto) references Producto(IdProducto) not null
 IdRestauracion int foreign key (IdRestauracion) references Restauracion(IdRestauracion)  not null,
 primary key(IdProducto,IdRestauracion)
 )
-
+/********************************************************************************************************************/
 
 -- alta de cliente
 /*create procedure SP_Cliente_Alta
@@ -144,19 +146,6 @@ end
 */
 
 
-/*
-create procedure SP_Auto_Alta
-@Placa varchar(7),
-@Marca varchar(10),
-@Modelo varchar(10),
-@Anio int,
-@IdCliente int
-as
-begin
-insert into Auto (Placa,IdStatus_Auto,Marca,Modelo,Anio,IdCliente)
-	values(@Placa,1,@Marca,@Modelo,@Anio,@IdCliente )
-end
-*/
 
 create procedure Alta_Prod
 @IdCliente int,
@@ -194,7 +183,7 @@ end
 
 select * from empleado
 update Empleado set Nombre='Adrian' ,ApPat='Perez', ApMat='Portillo' , IdDepartamento=3 WHERE IdEmpleado=4
-
+/*
 create procedure ListaEmpleado
 as
 begin
@@ -203,16 +192,7 @@ INNER JOIN Departamento AS d on LE.IdDepartamento = d.IdDepartamento
 inner join PUESTO AS P on  LE.IdPuesto = P.IdPuesto
 end
 
-<<<<<<< HEAD
-
-=======
-IdEmp = LE.IdEmpleado,
-                                   NomEmp = LE.Nombre,
-                                   ApPat = LE.ApPat,
-                                   ApMat = LE.ApMat,
-                                   DepaEmp = d.Descripcion,
-                                   PuestoEmp = P.Descripcion
-
+*/
 
 create procedure SP_Empleado_Update
 @IdEmpleado int,
@@ -225,4 +205,55 @@ as
 begin
 		update Empleado set Nombre=@Nombre,ApPat=@ApPat,ApMat=@ApMat,IdDepartamento=@IdDepartamento,IdPuesto=@IdPuesto where IdEmpleado=@IdEmpleado
 end
->>>>>>> 59ee5e2ccfc7b418d6f648f7fd2640f5765ff863
+
+
+select *from Auto
+
+alter procedure SP_Auto_Alta
+@Placa varchar(7),
+@Marca varchar(10),
+@Modelo varchar(10),
+@Anio int,
+@IdCliente int
+as
+begin
+insert into Auto (Placa,IdStatus_Auto,Marca,Modelo,Anio,IdCliente)
+	values(@Placa,1,@Marca,@Modelo,@Anio,@IdCliente )
+end
+
+
+select *from Auto
+
+delete from Auto where IdAuto=3
+
+select *from Auto where IdCliente=2
+
+alter procedure SP_AutoRestauracion_Alta
+@IdAuto int,
+@IdEmpleado int,
+@IdDepartamento int,
+@Descripcion varchar(50),
+@PrecioRestauracion decimal(10,3),
+@IdProducto int
+as
+begin
+declare @temp int
+insert into Restauracion (IdAuto,IdEmpleado, IdDepartamento,Descripcion,PrecioRestauracion,IdProducto,FechaReatauracion) values 
+						( @IdAuto,@IdEmpleado,@IdDepartamento,@Descripcion,@PrecioRestauracion,@IdProducto,GETDATE())
+
+set @temp=SCOPE_IDENTITY()
+
+insert into Auto_Reparacion (IdAuto,IdRestauracion) values (@IdAuto,@temp)
+
+end
+
+select *from Empleado
+select *from Restauracion
+
+select *from Producto
+select  *from Restauracion
+
+
+select * from  Auto_Reparacion 
+
+alter table Restauracion add FechaReatauracion date
