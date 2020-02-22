@@ -22,7 +22,7 @@ namespace LosInges.Controllers
             ViewBag.IdCliente = Session["IdCliente"];
 
             ViewBag.LA = (from a in db.Auto
-                          where a.IdCliente == IdCliente
+                          where a.IdCliente == IdCliente && a.Eliminado != true
                           select new
                           {
                               IdAuto = a.IdAuto,
@@ -46,7 +46,7 @@ namespace LosInges.Controllers
                            select new
                            {
                                IdAuto = a.IdAuto,
-                               Carro =a.Marca+" "+ a.Modelo
+                               Carro = a.Marca + " " + a.Modelo
                            }).ToList();
             ViewBag.Emp = (from e in db.Empleado
                            where e.IdDepartamento != 7
@@ -59,15 +59,15 @@ namespace LosInges.Controllers
                            where d.IdDepartamento != 7
                            select new
                            {
-                               IdD=d.IdDepartamento,
-                               Nombre=d.Descripcion
+                               IdD = d.IdDepartamento,
+                               Nombre = d.Descripcion
                            }).ToList();
             ViewBag.Prod = (from p in db.Producto
-                           select new
-                           {
-                               IdP = p.IdProducto,
-                               Nombre = p.Descripcion
-                           }).ToList();
+                            select new
+                            {
+                                IdP = p.IdProducto,
+                                Nombre = p.Descripcion
+                            }).ToList();
             return View("ServicioAuto");
         }
         [HttpPost]
@@ -84,9 +84,9 @@ namespace LosInges.Controllers
                 else
                 {
                     //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
-                     db.SP_AutoRestauracion_Alta(model.IdAuto,model.IdEmpleado,model.IdDepartamento,model.Descripcion,model.PrecioRestauracion,model.IdProducto);
+                    db.SP_AutoRestauracion_Alta(model.IdAuto, model.IdEmpleado, model.IdDepartamento, model.Descripcion, model.PrecioRestauracion, model.IdProducto);
                     return RedirectToAction("Update", "Cliente", new { IdCliente = IdCliente });
-                    
+
                 }
             }
             catch
@@ -126,29 +126,39 @@ namespace LosInges.Controllers
             }
         }
 
+
         public ActionResult ListaAutoServicio(int IdAuto)
         {
             List<ListaAS> json = (from r in db.Restauracion
-                                            join d in db.Departamento on r.IdDepartamento equals d.IdDepartamento
-                                            where r.IdAuto == IdAuto
-                                            select new ListaAS
-                                            {
-                                                IdAuto =  r.IdAuto,
-                                                IdRestauracion = r.IdRestauracion,
-                                                IdDepartamento = d.IdDepartamento,
-                                                Departamento = d.Descripcion,
-                                                Descripcion = r.Descripcion
-                                            }).ToList();
+                                  join d in db.Departamento on r.IdDepartamento equals d.IdDepartamento
+                                  join a in db.Auto on r.IdAuto equals a.IdAuto
+                                  where r.IdAuto == IdAuto && a.IdStatus_Auto != 3
+                                  select new ListaAS
+                                  {
+                                      IdAuto = r.IdAuto,
+                                      IdRestauracion = r.IdRestauracion,
+                                      IdDepartamento = d.IdDepartamento,
+                                      Departamento = d.Descripcion,
+                                      Descripcion = r.Descripcion
+                                  }).ToList();
             string JSONString = JsonConvert.SerializeObject(json);
             return Json(JSONString, JsonRequestBehavior.AllowGet);
         }
         public ActionResult EliminarAuto(int IdAuto)
-        {            
+        {
             ObjectParameter OutPut = new ObjectParameter("Salida", typeof(int));
             db.SP_Auto_Eliminar(IdAuto, OutPut);
             int regreso = Convert.ToInt32(OutPut.Value);
             return Json(new { mensaje = regreso }, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult TerminarServicio(int IdAuto)
+        {
+            ObjectParameter OutPut = new ObjectParameter("Salida", typeof(int));
+            db.SP_Auto_EstadoTerminado(IdAuto, OutPut);
+            int regreso = Convert.ToInt32(OutPut.Value);
+            return Json(new { mensaje = 1 }, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }

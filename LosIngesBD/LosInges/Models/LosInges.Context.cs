@@ -239,5 +239,27 @@ namespace LosInges.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Empleado_Update", idEmpleadoParameter, nombreParameter, apPatParameter, apMatParameter, idDepartamentoParameter, idPuestoParameter);
         }
+    
+        public virtual int Alta_Producto(string descripcion, string noParte)
+        {
+            var descripcionParameter = descripcion != null ?
+                new ObjectParameter("Descripcion", descripcion) :
+                new ObjectParameter("Descripcion", typeof(string));
+    
+            var noParteParameter = noParte != null ?
+                new ObjectParameter("NoParte", noParte) :
+                new ObjectParameter("NoParte", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Alta_Producto", descripcionParameter, noParteParameter);
+        }
+    
+        public virtual int SP_Auto_EstadoTerminado(Nullable<int> idAuto, ObjectParameter salida)
+        {
+            var idAutoParameter = idAuto.HasValue ?
+                new ObjectParameter("IdAuto", idAuto) :
+                new ObjectParameter("IdAuto", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_Auto_EstadoTerminado", idAutoParameter, salida);
+        }
     }
 }

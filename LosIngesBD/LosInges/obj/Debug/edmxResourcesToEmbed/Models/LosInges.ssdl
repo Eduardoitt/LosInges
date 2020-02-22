@@ -11,6 +11,7 @@
     <Property Name="Modelo" Type="varchar" MaxLength="10" />
     <Property Name="Anio" Type="int" />
     <Property Name="IdCliente" Type="int" />
+    <Property Name="Eliminado" Type="bit" />
   </EntityType>
   <EntityType Name="Auto_Reparacion">
     <Key>
@@ -399,6 +400,10 @@
     <Parameter Name="Telefono" Type="varchar" Mode="In" />
     <Parameter Name="Correo" Type="varchar" Mode="In" />
   </Function>
+  <Function Name="Alta_Producto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Descripcion" Type="varchar" Mode="In" />
+    <Parameter Name="NoParte" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="SP_Auto_Alta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Placa" Type="varchar" Mode="In" />
     <Parameter Name="Marca" Type="varchar" Mode="In" />
@@ -407,6 +412,10 @@
     <Parameter Name="IdCliente" Type="int" Mode="In" />
   </Function>
   <Function Name="SP_Auto_Eliminar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IdAuto" Type="int" Mode="In" />
+    <Parameter Name="Salida" Type="int" Mode="InOut" />
+  </Function>
+  <Function Name="SP_Auto_EstadoTerminado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IdAuto" Type="int" Mode="In" />
     <Parameter Name="Salida" Type="int" Mode="InOut" />
   </Function>

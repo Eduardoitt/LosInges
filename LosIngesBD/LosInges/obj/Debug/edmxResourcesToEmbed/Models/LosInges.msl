@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Auto">
       <EntityTypeMapping TypeName="LosIngesModel.Auto">
         <MappingFragment StoreEntitySet="Auto">
+          <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="IdAuto" ColumnName="IdAuto" />
           <ScalarProperty Name="Placa" ColumnName="Placa" />
           <ScalarProperty Name="IdStatus_Auto" ColumnName="IdStatus_Auto" />
@@ -153,5 +154,7 @@
     <FunctionImportMapping FunctionImportName="SP_Cliente_Alta" FunctionName="LosIngesModel.Store.SP_Cliente_Alta" />
     <FunctionImportMapping FunctionImportName="SP_Cliente_Update" FunctionName="LosIngesModel.Store.SP_Cliente_Update" />
     <FunctionImportMapping FunctionImportName="SP_Empleado_Update" FunctionName="LosIngesModel.Store.SP_Empleado_Update" />
+    <FunctionImportMapping FunctionImportName="Alta_Producto" FunctionName="LosIngesModel.Store.Alta_Producto" />
+    <FunctionImportMapping FunctionImportName="SP_Auto_EstadoTerminado" FunctionName="LosIngesModel.Store.SP_Auto_EstadoTerminado" />
   </EntityContainerMapping>
 </Mapping>

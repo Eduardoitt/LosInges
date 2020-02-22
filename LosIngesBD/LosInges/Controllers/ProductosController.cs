@@ -10,7 +10,7 @@ namespace LosInges.Controllers
     public class ProductosController : Controller
     {
         //
-        private LosIngesEntities db= new LosIngesEntities();
+        private LosIngesEntities db = new LosIngesEntities();
         // GET: Productos
         public ActionResult Index()
         {
@@ -52,7 +52,7 @@ namespace LosInges.Controllers
                 {
                     //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
 
-                    //db.Alta_Producto(Produc.Descripcion, Produc.NoParte);
+                    db.Alta_Producto(Produc.Descripcion, Produc.NoParte);
                     return RedirectToAction("Create", "Productos");
                 }
 
@@ -63,48 +63,14 @@ namespace LosInges.Controllers
             }
         }
 
-        // GET: Productos/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Productos/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
         // GET: Productos/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int IdProducto)
         {
-            return View();
+            Producto prod = db.Producto.Where(x => x.IdProducto == IdProducto).FirstOrDefault<Producto>();
+            db.Producto.Remove(prod);
+            db.SaveChanges();
+            return Json(new { regreso = 1 }, JsonRequestBehavior.AllowGet);
         }
 
-        // POST: Productos/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

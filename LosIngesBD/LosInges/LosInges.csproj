@@ -474,7 +474,6 @@
     <Content Include="Views\Empleados\EmpUpdate.cshtml" />
     <Content Include="Views\Auto\ListaAutos.cshtml" />
     <Content Include="Views\Auto\ServicioAuto.cshtml" />
-    <Content Include="Views\Auto\ListaAutoServicio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -30,6 +30,7 @@ namespace LosInges.Models
         public string Modelo { get; set; }
         public Nullable<int> Anio { get; set; }
         public Nullable<int> IdCliente { get; set; }
+        public Nullable<bool> Eliminado { get; set; }
     
         public virtual Cliente Cliente { get; set; }
         public virtual Status_Auto Status_Auto { get; set; }

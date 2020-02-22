@@ -17,6 +17,7 @@
     <NavigationProperty Name="Factura" Relationship="Self.FK__Factura__IdAuto__6A30C649" FromRole="Auto" ToRole="Factura" />
     <NavigationProperty Name="Restauracion" Relationship="Self.FK__Restaurac__IdAut__6477ECF3" FromRole="Auto" ToRole="Restauracion" />
     <NavigationProperty Name="Restauracion1" Relationship="Self.Auto_Reparacion" FromRole="Auto" ToRole="Restauracion" />
+    <Property Name="Eliminado" Type="Boolean" />
   </EntityType>
   <EntityType Name="Cliente">
     <Key>
@@ -511,6 +512,14 @@
       <Parameter Name="ApMat" Mode="In" Type="String" />
       <Parameter Name="IdDepartamento" Mode="In" Type="Int32" />
       <Parameter Name="IdPuesto" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Alta_Producto">
+      <Parameter Name="Descripcion" Mode="In" Type="String" />
+      <Parameter Name="NoParte" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_Auto_EstadoTerminado">
+      <Parameter Name="IdAuto" Mode="In" Type="Int32" />
+      <Parameter Name="Salida" Mode="InOut" Type="Int32" />
     </FunctionImport>
   </EntityContainer>
 </Schema>

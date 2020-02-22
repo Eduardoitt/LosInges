@@ -32,7 +32,8 @@ IdStatus_Auto int foreign key (IdStatus_Auto) references Status_Auto (IdStatus_A
 Marca varchar(10),
 Modelo varchar(10),
 Anio int,
-IdCliente int foreign key (IdCliente) references Cliente(IdCliente)
+IdCliente int foreign key (IdCliente) references Cliente(IdCliente),
+Eliminado bit
 )
 
 go
@@ -159,7 +160,7 @@ begin
 		update Cliente set Nombre=@Nombre,ApPat=@ApPat,ApMat=@ApMat,Telefono=@Telefono,Correo=@Correo where IdCliente=@IdCliente
 end
 
-ALTER procedure [dbo].[Alta_Producto]
+create procedure [dbo].[Alta_Producto]
 @Descripcion varchar(40),
 @NoParte varchar(15)
 as
@@ -207,7 +208,7 @@ begin
 end
 
 
-select *from Auto
+
 
 alter procedure SP_Auto_Alta
 @Placa varchar(7),
@@ -221,12 +222,6 @@ insert into Auto (Placa,IdStatus_Auto,Marca,Modelo,Anio,IdCliente)
 	values(@Placa,1,@Marca,@Modelo,@Anio,@IdCliente )
 end
 
-
-select *from Auto
-
-delete from Auto where IdAuto=3
-
-select *from Auto where IdCliente=2
 
 alter procedure SP_AutoRestauracion_Alta
 @IdAuto int,
@@ -245,35 +240,26 @@ set @temp=SCOPE_IDENTITY()
 
 insert into Auto_Reparacion (IdAuto,IdRestauracion) values (@IdAuto,@temp)
 
+update Auto set IdStatus_Auto=2 where IdAuto=@IdAuto
+
 end
 
-select *from Empleado
-select *from Restauracion
-
-select *from Producto
-select  *from Restauracion
-
-
-select Departamento.Descripcion,Restauracion.Descripcion from  Auto_Reparacion inner join Restauracion on Auto_Reparacion.IdRestauracion = Restauracion.IdRestauracion
-inner join Departamento on Restauracion.IdDepartamento=Departamento.IdDepartamento
-where Restauracion.IdAuto=1
-
-select *from Auto_Reparacion where IdAuto=1
-
-select Departamento.Descripcion,Restauracion.Descripcion  from Restauracion inner join Departamento on Restauracion.IdDepartamento= Departamento.IdDepartamento where IdAuto=5
-
-select *from Auto
-
-select *from Au
-
-alter procedure SP_Auto_Eliminar
+alter procedure SP_Auto_EstadoTerminado
 @IdAuto int,
 @Salida int output
 as
 begin
-	delete from Auto where IdAuto=@IdAuto
-	set @Salida=1
+update Auto set IdStatus_Auto=3 where IdAuto=@IdAuto
+set @Salida=1
 end
 
-select *from Auto
-delete from Auto where IdAuto=8 
+/*ALTER procedure [dbo].[SP_Auto_Eliminar]
+@IdAuto int,
+@Salida int output
+as
+begin
+	
+	update  Auto set Eliminado=1 where IdAuto=@IdAuto
+	set @Salida=1
+end*/
+

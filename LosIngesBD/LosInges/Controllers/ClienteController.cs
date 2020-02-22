@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace LosInges.Controllers
 {
-    
+
     public class ClienteController : Controller
     {
         private LosIngesEntities db = new LosIngesEntities();
@@ -38,11 +38,12 @@ namespace LosInges.Controllers
         // GET: Cliente/Create
         public ActionResult Create()
         {
-            ViewBag.TipoCliente = (from TP in db.TipoCliente select new 
-            {
-                IdTP=TP.IdTipoCliente,
-                Des=TP.Descripcion
-            }).ToList();
+            ViewBag.TipoCliente = (from TP in db.TipoCliente
+                                   select new
+                                   {
+                                       IdTP = TP.IdTipoCliente,
+                                       Des = TP.Descripcion
+                                   }).ToList();
             return View("Cliente");
         }
 
@@ -60,7 +61,7 @@ namespace LosInges.Controllers
                 else
                 {
                     //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
-                    db.SP_Cliente_Alta(model.Nombre,model.ApPat,model.ApMat,model.Telefono,model.Correo);
+                    db.SP_Cliente_Alta(model.Nombre, model.ApPat, model.ApMat, model.Telefono, model.Correo);
                     return RedirectToAction("Index", "Cliente");
                 }
 
@@ -75,7 +76,7 @@ namespace LosInges.Controllers
         public ActionResult Update(int IdCliente)
         {
             Cliente cliente = db.Cliente.Where(x => x.IdCliente == IdCliente).FirstOrDefault<Cliente>();
-            
+
             ViewBag.TipoCliente = cliente.IdTipoCliente;
             return View("Update", cliente);
         }
@@ -94,7 +95,7 @@ namespace LosInges.Controllers
                 else
                 {
                     //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
-                    db.SP_Cliente_Update(model.IdCliente,model.Nombre, model.ApPat, model.ApMat, model.Telefono, model.Correo);
+                    db.SP_Cliente_Update(model.IdCliente, model.Nombre, model.ApPat, model.ApMat, model.Telefono, model.Correo);
                     return RedirectToAction("Index", "Home");
                 }
 

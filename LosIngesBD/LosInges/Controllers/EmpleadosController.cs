@@ -26,8 +26,8 @@ namespace LosInges.Controllers
         public ActionResult Mostrar()
         {
             ViewBag.ListEmp = (from LE in db.Empleado
-                                   join d in db.Departamento on LE.IdDepartamento equals d.IdDepartamento
-                                   join P in db.Puesto on LE.IdPuesto equals P.IdPuesto
+                               join d in db.Departamento on LE.IdDepartamento equals d.IdDepartamento
+                               join P in db.Puesto on LE.IdPuesto equals P.IdPuesto
                                select new
                                {
                                    IdEmp = LE.IdEmpleado,
@@ -36,7 +36,7 @@ namespace LosInges.Controllers
                                    ApMat = LE.ApMat,
                                    DepaEmp = LE.IdDepartamento,
                                    PuestoEmp = LE.IdPuesto,
-                                   DepaEmpNom=d.Descripcion,
+                                   DepaEmpNom = d.Descripcion,
                                    PuestoEmpNom = P.Descripcion
                                }).ToList();
             return View("Empleado");
@@ -110,7 +110,7 @@ namespace LosInges.Controllers
                                 }).ToList();
             Empleado empleado = db.Empleado.Where(x => x.IdEmpleado == IdEmpleado).FirstOrDefault<Empleado>();
             ViewBag.TipoCliente = empleado.IdPuesto;
-            
+
             return View("EmpUpdate", empleado);
         }
 
@@ -127,7 +127,7 @@ namespace LosInges.Controllers
                 }
                 else
                 {
-                    //ObjectParameter OutPut = new ObjectParameter("Correcto", typeof(bool));
+
                     db.SP_Empleado_Update(Emp.IdEmpleado, Emp.Nombre, Emp.ApPat, Emp.ApMat, Emp.IdDepartamento, Emp.IdPuesto);
                     return RedirectToAction("Mostrar", "Empleados");
                 }
@@ -140,25 +140,15 @@ namespace LosInges.Controllers
         }
 
         // GET: Empleados/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(int IdEmpleado)
         {
-            return View();
+            Empleado emp = db.Empleado.Where(x => x.IdEmpleado == IdEmpleado).FirstOrDefault<Empleado>();
+            db.Empleado.Remove(emp);
+            db.SaveChanges();
+            return Json(new { mensaje = 1 }, JsonRequestBehavior.AllowGet);
         }
 
-        // POST: Empleados/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+
     }
 }

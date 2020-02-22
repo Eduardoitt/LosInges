@@ -15,7 +15,7 @@
             @Html.AntiForgeryToken()
 
             <div class="card-body">
-                
+
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.IdEmpleado)
 
@@ -61,11 +61,27 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
+                        <input type="submit" value="Actualizar" class="btn btn-primary" />
+                        <input type="button" value="Dar de baja" id="btnbaja" class="btn btn-danger" />
                     </div>
                 </div>
             </div>
         }
     </div>
 </div>
+<script>
+    $("#btnbaja").click(function () {
+        $.get('@Url.Action("Delete", "Empleados",new { IdEmpleado="_IdAv_"})'.replace('_IdAv_', @Model.IdEmpleado), function (data) {
 
+            Swal.fire(
+                'Correcto!',
+                'Empleado se elimino con exito',
+                'success'
+            ).then((result) => {
+                location.reload();
+            });
+        });
+    });
+
+
+</script>
